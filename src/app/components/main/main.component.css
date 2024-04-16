@@ -1,0 +1,17 @@
+/* main.component.css */
+div {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    margin-right: 5px;
+  }
+  
+  input {
+    margin-left: 5px;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+  
