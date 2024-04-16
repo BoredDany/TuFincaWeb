@@ -1,0 +1,21 @@
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+  }
+  
+  .social-links {
+    margin-bottom: 1em;
+  }
+  
+  .social-links a {
+    margin: 0 10px;
+  }
+  
+  .social-links img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+  
