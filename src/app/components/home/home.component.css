@@ -1,0 +1,118 @@
+/* Restablece los márgenes y paddings globales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0; /* Elimina cualquier margen predeterminado */
+    padding: 0; /* Elimina cualquier padding predeterminado */
+    height: 100%; /* Asegura que el html ocupe toda la altura de la ventana */
+    width: 100%; /* Asegura que el html ocupe todo el ancho de la ventana */
+}
+
+/* Estilos para el header y la barra de navegación */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* El header ocupa todo el ancho de la página */
+    background-color: #430f66;
+    padding: 10px;
+    z-index: 1;
+}
+
+header nav {
+    display: flex;
+    justify-content: center; /* Centra el contenido de la barra de navegación */
+    width: 100%;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Estilos para la barra de búsqueda */
+section {
+    display: flex;
+    justify-content: center; /* Centra la barra de búsqueda */
+    padding: 10px;
+    width: 100%; /* Ocupa todo el ancho */
+    margin-top: 60px; /* Ajusta la altura según la altura del header */
+}
+
+section input {
+    width: 70%; /* Ajusta el ancho del input según tus necesidades */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño del input */
+}
+
+/* Estilos para el contenedor principal */
+main {
+    padding: 10px;
+    margin: 0; /* Elimina el margen */
+    flex-grow: 1; /* Hace que el main ocupe todo el espacio restante */
+    padding-bottom: 60px; /* Añade espacio inferior para evitar que el footer tape el área scrolleable */
+}
+
+/* Estilos para la cuadrícula de propiedades */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas */
+    gap: 20px;
+    padding: 20px; /* Padding interno de la cuadrícula */
+}
+
+/* Estilos para las tarjetas de propiedad */
+.property-card {
+    display: flex;
+    flex-direction: column; /* Ordena los elementos verticalmente */
+    border: 1px solid #000;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0; /* Elimina el margen */
+    padding: 10px; /* Padding interno */
+}
+
+.property-card img {
+    width: 100%; /* Imagen ocupa todo el ancho */
+    height: auto;
+}
+
+.property-card .property-info {
+    padding: 10px; /* Ajusta el padding interno de la información */
+    text-align: center;
+}
+
+.property-card button {
+    margin: 10px;
+    background-color: #a57fbe;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Ajusta el espacio entre las palabras en las tarjetas */
+.property-card h2,
+.property-card p {
+    margin: 0; /* Quita espacio adicional */
+}
+
+/* Estilos para el footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* El footer ocupa todo el ancho de la página */
+    padding: 10px;
+    text-align: center;
+    background-color: #430f66;
+    color: #ffffff;
+}

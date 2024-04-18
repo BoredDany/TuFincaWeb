@@ -1,0 +1,36 @@
+<header>
+  <nav>
+    <!-- Aquí puedes agregar enlaces a otras partes de tu aplicación -->
+    <a href="#">Inicio</a>
+    <a href="#">Contacto</a>
+    <!-- etc. -->
+  </nav>
+</header>
+
+<section>
+  <input type="text" placeholder="Buscar propiedad...">
+</section>
+
+<main>
+  <div *ngIf="properties.length > 0; else noProperties" class="property-grid">
+    <div *ngFor="let property of properties" class="property-card">
+      <img [src]="'/assets/images/home.jpg'" alt="{{ property.name }}">
+      <div class="property-info">
+        <h2>{{ property.name }}</h2>
+        <p>País: {{ property.country }}</p>
+        <p>Ciudad: {{ property.city }}</p>
+        <p>Precio: {{ property.price }}</p>
+        <p>Estado: {{ property.rentIds.length > 0 ? 'No disponible' : 'Disponible' }}</p>
+      </div>
+      <button>Ver</button>
+    </div>
+  </div>
+
+  <ng-template #noProperties>
+    <p>Finding properties...</p>
+  </ng-template>
+</main>
+
+<footer>
+  <p>ARRIENDA TU FINCA</p>
+</footer>
