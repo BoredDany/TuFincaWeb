@@ -1,19 +1,22 @@
 <app-menu></app-menu>
 
 <section>
-  <input type="text" placeholder="Buscar propiedad...">
+  <input type="text" placeholder="Buscar propiedad..." />
 </section>
 
 <main>
   <div *ngIf="properties.length > 0; else noProperties" class="property-grid">
     <div *ngFor="let property of properties" class="property-card">
-      <img [src]="'/assets/images/home.jpg'" alt="{{ property.name }}">
+      <img [src]="'/assets/images/home.jpg'" alt="{{ property.name }}" />
       <div class="property-info">
         <h2>{{ property.name }}</h2>
         <p>País: {{ property.country }}</p>
         <p>Ciudad: {{ property.city }}</p>
         <p>Precio: {{ property.price }}</p>
-        <p>Estado: {{ property.rentIds.length > 0 ? 'No disponible' : 'Disponible' }}</p>
+        <p>
+          Estado:
+          {{ property.rentIds.length > 0 ? "No disponible" : "Disponible" }}
+        </p>
       </div>
       <button (click)="viewProperty(property)">Ver</button>
     </div>
@@ -23,6 +26,5 @@
     <p>Finding properties...</p>
   </ng-template>
 </main>
-
 
 <app-footer></app-footer>

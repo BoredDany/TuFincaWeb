@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PropertyServiceService } from '../../services/property-service.service';
+import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { Property } from '../../models/Property';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -27,7 +27,7 @@ export class HomeComponent {
   }
 
   loadProperties (){
-    this.propertyService.getPropertiesDeploy().then((properties) => {
+    this.propertyService.getProperties().then((properties) => {
       this.properties = properties;
     }).catch((error) => {
       console.error(error);

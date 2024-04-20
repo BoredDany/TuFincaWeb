@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Property } from '../../models/Property';
 import { ActivatedRoute } from '@angular/router';
-import { PropertyServiceService } from '../../services/property-service.service';
+import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
 
@@ -30,7 +30,7 @@ export class PropertyComponent {
     const idParam = this.route.snapshot.paramMap.get('id');
     const id = idParam ? +idParam : 0;
     this.propertyService
-      .getPropertybyIdDeploy(id)
+      .getPropertybyId(id)
       .then((property) => {
         // Aquí puedes hacer algo con los detalles de la propiedad, como asignarlos a una variable de la clase.
         this.property = property;
