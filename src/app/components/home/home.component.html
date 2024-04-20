@@ -1,11 +1,4 @@
-<header>
-  <nav>
-    <!-- Aquí puedes agregar enlaces a otras partes de tu aplicación -->
-    <a href="#">Inicio</a>
-    <a href="#">Contacto</a>
-    <!-- etc. -->
-  </nav>
-</header>
+<app-menu></app-menu>
 
 <section>
   <input type="text" placeholder="Buscar propiedad...">
@@ -22,7 +15,7 @@
         <p>Precio: {{ property.price }}</p>
         <p>Estado: {{ property.rentIds.length > 0 ? 'No disponible' : 'Disponible' }}</p>
       </div>
-      <button>Ver</button>
+      <button (click)="viewProperty(property)">Ver</button>
     </div>
   </div>
 
@@ -31,6 +24,5 @@
   </ng-template>
 </main>
 
-<footer>
-  <p>ARRIENDA TU FINCA</p>
-</footer>
+
+<app-footer></app-footer>

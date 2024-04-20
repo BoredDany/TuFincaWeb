@@ -18,4 +18,8 @@ export class PropertyServiceService {
     return axios.get<Property []>(this.localUrl).then(response => response.data);
   }
 
+  getPropertybyIdDeploy(id: number): Promise<Property>{
+    return axios.get<Property>(this.localUrl + id).then(response => response.data);
+  }
+
 }

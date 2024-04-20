@@ -1,0 +1,22 @@
+/* Estilos para el header y la barra de navegación */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* El header ocupa todo el ancho de la página */
+    background-color: #430f66;
+    padding: 10px;
+    z-index: 1;
+}
+
+header nav {
+    display: flex;
+    justify-content: center; /* Centra el contenido de la barra de navegación */
+    width: 100%;
+}
+
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #ffffff;
+}

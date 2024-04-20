@@ -1,0 +1,11 @@
+/* Estilos para el footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* El footer ocupa todo el ancho de la página */
+    padding: 10px;
+    text-align: center;
+    background-color: #430f66;
+    color: #ffffff;
+}

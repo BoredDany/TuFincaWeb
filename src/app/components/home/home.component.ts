@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { PropertyServiceService } from '../../services/property-service.service';
 import { Property } from '../../models/Property';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { MenuComponent } from '../menu/menu.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MenuComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -14,7 +17,10 @@ export class HomeComponent {
   title = 'Home';
   properties: Property[] = [];
 
-  constructor(private propertyService: PropertyServiceService) {}
+  constructor(
+    private propertyService: PropertyServiceService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadProperties();
@@ -27,4 +33,9 @@ export class HomeComponent {
       console.error(error);
     });
   }
+
+  viewProperty(property: Property) {
+    this.router.navigate(['/property', property.idProperty]);
+  }
+
 }

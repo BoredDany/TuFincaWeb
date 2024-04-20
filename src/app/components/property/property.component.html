@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+
+
+<main class="main-content">
+  <div class="property-image">
+    <img [src]="'/assets/images/home.jpg'" alt="{{ property?.name }}" />
+  </div>
+  <div class="property-data">
+    <h2>{{ property.name }}</h2>
+    <p>{{ property.country }}, {{ property.city }}</p>
+    <p>
+      Latitude: {{ property.latitude }}, Longitude: {{ property.longitude }}
+    </p>
+    <p>Price: {{ property.price }}</p>
+    <p>Area: {{ property.area }}</p>
+    <p>Description: {{ property.description }}</p>
+    <p>Rooms: {{ property.rooms }}</p>
+    <p>Bathrooms: {{ property.bathrooms }}</p>
+    <p>Parking: {{ property.parking }}</p>
+    <p>Kitchens: {{ property.kitchens }}</p>
+    <p>Floors: {{ property.floors }}</p>
+    <p>
+      Estado:
+      {{ property.rentIds.length > 0 ? "No disponible" : "Disponible" }}
+    </p>
+    <p>Owner: {{ property.ownerId }}</p>
+
+    <div class="buttons">
+      <button>Request Rent</button>
+      <button>Rent</button>
+    </div>
+    
+  </div>
+
+  
+</main>
+
+<app-footer></app-footer>
