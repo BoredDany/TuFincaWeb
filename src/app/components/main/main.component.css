@@ -1,14 +1,13 @@
-/* main.component.css */
+
 .form-container {
-  background-image: url('../assets/fondo-formulario.jpg'); /* Ruta de la imagen de fondo */
+  background-image: url('/assets/fondo-formulario.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 20px; /* Ajusta el padding según sea necesario */
-  border-radius: 10px; /* Opcional: añade un borde redondeado al contenedor del formulario */
+  padding: 20px; 
+  border-radius: 10px; 
 }
 
-/* Estilos para los elementos del formulario */
 .form-container input,
 .form-container button {
   margin-bottom: 10px;

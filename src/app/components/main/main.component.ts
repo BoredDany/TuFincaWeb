@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
+  standalone: true, 
+  imports: [ReactiveFormsModule],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
+
 export class MainComponent {
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
