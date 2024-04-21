@@ -6,25 +6,25 @@
 }
 
 .social-links {
-  display: flex; /* Usa flexbox para alinear los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos horizontalmente */
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+  display: flex; 
+  justify-content: center; 
+  flex-wrap: wrap; 
   margin-bottom: 1em;
 }
 
 .social-grid {
-  display: flex; /* Display flex para alinear ícono y texto horizontalmente */
-  align-items: center; /* Centra verticalmente el ícono y el texto */
-  margin: 0 10px; /* Espacio horizontal entre los elementos */
+  display: flex; 
+  align-items: center; 
+  margin: 0 10px; 
 }
 
 .social-links a {
-  color: white; /* Asegura que los enlaces sean blancos */
-  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: white; 
+  text-decoration: none; 
 }
 
 .social-links img {
   width: 24px;
   height: 24px;
-  margin-right: 5px; /* Añade un pequeño espacio entre el ícono y el texto */
+  margin-right: 15px;
 }
