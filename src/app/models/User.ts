@@ -1,7 +1,5 @@
-export enum Status {
-  ACTIVE = 'ACTIVE',
-  DELETED = 'DELETED',
-}
+import { Status } from "./status";
+
 export class User {
   idUser: number;
   name: string;

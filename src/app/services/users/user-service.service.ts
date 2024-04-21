@@ -19,7 +19,7 @@ export class UserServiceService {
   }
 
   //GET BY ID
-  getUsersbyId(id: number): Promise<User>{
+  getUserbyId(id: number): Promise<User>{
     return axios.get<User>(this.localUrl + id).then(response => response.data);
   }
 

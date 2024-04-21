@@ -1,0 +1,40 @@
+<app-menu></app-menu>
+
+<div class="form-container">
+  <form [formGroup]="rentRequestForm" (ngSubmit)="requestRent()">
+    <h1>Request Rent</h1>
+    <div class="date-fields">
+      <p>Start Date</p>
+      <input
+        type="date"
+        formControlName="dateStart"
+        [(ngModel)]="rentRequest.dateStart"
+      />
+    </div>
+
+    <div class="date-fields">
+      <p>End Date</p>
+      <input
+        type="date"
+        formControlName="dateEnd"
+        [(ngModel)]="rentRequest.dateEnd"
+      />
+    </div>
+
+    <input
+      type="number"
+      formControlName="numPeople"
+      placeholder="Number of People"
+      [(ngModel)]="rentRequest.numPeople"
+    />
+    <p>Property owner: {{ owner.name }}</p>
+    <p>Property to rent: {{ property.name }}</p>
+    <p>Country: {{ property.country }}</p>
+    <p>City: {{ property.city }}</p>
+    <p>Total Price: {{ calculatePrice() }}</p>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<app-footer></app-footer>

@@ -2,7 +2,7 @@
 
 <main class="main-content">
   <div class="property-image">
-    <img [src]="'/assets/images/home.jpg'" alt="{{ property?.name }}" />
+    <img [src]="'/assets/images/home.jpg'" alt="{{ property.name }}" />
   </div>
   <div class="property-data">
     <h2>{{ property.name }}</h2>
@@ -29,8 +29,8 @@
     <p>Owner: {{ property.ownerId }}</p>
 
     <div class="buttons">
-      <button>Request Rent</button>
-      <button>Rent</button>
+      <button (click)="requestProperty()">Request Rent</button>
+      <button (click)="rentProperty()">Rent</button>
     </div>
   </div>
 </main>

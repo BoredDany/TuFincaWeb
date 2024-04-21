@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { Property } from '../../models/Property';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-property',
   standalone: true,
-  imports: [MenuComponent, FooterComponent],
+  imports: [CommonModule, MenuComponent, FooterComponent],
   templateUrl: './property.component.html',
   styleUrl: './property.component.css',
 })
@@ -17,7 +18,8 @@ export class PropertyComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private propertyService: PropertyServiceService
+    private propertyService: PropertyServiceService,
+    private router: Router
   ) {
     this.property = {} as Property;
   }
@@ -32,11 +34,19 @@ export class PropertyComponent {
     this.propertyService
       .getPropertybyId(id)
       .then((property) => {
-        // Aquí puedes hacer algo con los detalles de la propiedad, como asignarlos a una variable de la clase.
         this.property = property;
       })
       .catch((error) => {
         console.error(error);
       });
   }
+
+  requestProperty () {
+    this.router.navigate(['/requestRent', this.property.idProperty]);
+  }
+
+  rentProperty () {
+    this.router.navigate(['/rent', this.property.idProperty]);
+  }
+
 }

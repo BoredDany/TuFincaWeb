@@ -1,0 +1,43 @@
+/* Estilos para el menú */
+app-menu {
+  margin-bottom: 20px; /* Agrega margen en la parte inferior */
+}
+
+/* Estilos para el contenido del formulario */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* Ajusta 120px al tamaño del menú y el footer */
+  margin-bottom: 20px; /* Ajusta el margen inferior para dejar espacio para el footer */
+  margin-top: 20px; /* Agrega margen en la parte superior */
+}
+
+/* Estilos para el formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 30%; /* Ajusta el ancho del formulario según sea necesario */
+}
+
+/* Estilos para los elementos de fecha */
+.date-fields {
+  display: flex;
+  align-items: center; /* Alinear verticalmente */
+}
+
+.date-fields p {
+  margin-right: 10px; /* Margen a la derecha para separar del siguiente texto */
+}
+
+/* Estilos para el botón de enviar */
+button[type="submit"] {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Estilos para el footer */
+app-footer {
+  margin-top: 20px; /* Agrega margen en la parte superior */
+}
