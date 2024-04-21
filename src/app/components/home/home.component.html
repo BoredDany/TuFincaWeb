@@ -13,10 +13,6 @@
         <p>País: {{ property.country }}</p>
         <p>Ciudad: {{ property.city }}</p>
         <p>Precio: {{ property.price }}</p>
-        <p>
-          Estado:
-          {{ property.rentIds.length > 0 ? "No disponible" : "Disponible" }}
-        </p>
       </div>
       <button (click)="viewProperty(property)">See more</button>
     </div>

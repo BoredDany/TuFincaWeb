@@ -6,7 +6,7 @@ import { User } from '../../models/User';
 @Injectable({
   providedIn: 'root'
 })
-export class UserServiceService {
+export class UserService {
 
   private deployUrl = 'https://gruposjaveriana.dynaco.co/grupo23/users/';
   private localUrl = 'http://localhost:8080/grupo23/users/';

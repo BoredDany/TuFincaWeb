@@ -8,8 +8,8 @@ import { Property } from '../../models/Property';
 import { ActivatedRoute } from '@angular/router';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { User } from '../../models/User';
-import { UserServiceService } from '../../services/users/user-service.service';
-import { RentRequestService } from '../../services/retrequests/rent-request.service';
+import { UserService } from '../../services/users/user.service';
+import { RentRequestService } from '../../services/rentrequests/rent-request.service';
 import { Status } from '../../models/status';
 
 @Component({
@@ -23,6 +23,7 @@ export class RequestRentComponent {
   rentRequest: RentRequest;
   property: Property;
   owner: User;
+  renterId = 2; // TODO: get renterId from session
 
   rentRequestForm = new FormGroup({
     dateStart: new FormControl(''),
@@ -33,7 +34,7 @@ export class RequestRentComponent {
   constructor(
     private route: ActivatedRoute,
     private propertyService: PropertyServiceService,
-    private userService: UserServiceService,
+    private userService: UserService,
     private rentRequestService: RentRequestService
   ) {
     this.rentRequest = {} as RentRequest;
@@ -127,7 +128,7 @@ export class RequestRentComponent {
     this.rentRequest.price = this.calculatePrice();
     this.rentRequest.approval = 0;
     this.rentRequest.ownerId = this.property.ownerId;
-    this.rentRequest.renterId = 2; // TODO: get renterId from session
+    this.rentRequest.renterId = this.renterId; // TODO: get renterId from session
     this.rentRequest.propertyId = this.property.idProperty;
     this.rentRequest.status = Status.ACTIVE;
 

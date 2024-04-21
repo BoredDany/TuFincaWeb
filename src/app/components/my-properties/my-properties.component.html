@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+
+<main>
+    <div *ngIf="requests.length > 0; else noRequests" class="request-grid">
+      <div *ngFor="let request of requests" class="request-card">
+        <div class="request-info">
+          <h2>Solicitud de renta</h2>
+          <p>Propiedad: {{ request.propertyId }}</p>
+          <p>Solicitante: {{ request.renterId }}</p>
+          <p>Fecha de incio: {{ request.dateStart }}</p>
+          <p>Fecha de fin: {{ request.dateEnd }}</p>
+          <p>Número de personas: {{ request.numPeople }}</p>
+          <p>Precio: {{ request.price }}</p>
+        </div>
+        <button (click)="acceptRequest(request.idRentRequest)">Aceptar</button>
+        <button (click)="rejectRequest(request.idRentRequest)">Rechazar</button>
+      </div>
+    </div>
+  
+    <ng-template #noRequests>
+      <p>Finding properties...</p>
+    </ng-template>
+  </main>
+
+<app-footer></app-footer>

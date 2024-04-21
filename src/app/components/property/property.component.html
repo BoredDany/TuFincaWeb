@@ -18,19 +18,10 @@
     <p>Parking: {{ property.parking }}</p>
     <p>Kitchens: {{ property.kitchens }}</p>
     <p>Floors: {{ property.floors }}</p>
-    <p>
-      Estado:
-      {{
-        property && property.rentIds && property.rentIds.length > 0
-          ? "No disponible"
-          : "Disponible"
-      }}
-    </p>
     <p>Owner: {{ property.ownerId }}</p>
 
     <div class="buttons">
       <button (click)="requestProperty()">Request Rent</button>
-      <button (click)="rentProperty()">Rent</button>
     </div>
   </div>
 </main>

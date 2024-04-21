@@ -45,8 +45,5 @@ export class PropertyComponent {
     this.router.navigate(['/requestRent', this.property.idProperty]);
   }
 
-  rentProperty () {
-    this.router.navigate(['/rent', this.property.idProperty]);
-  }
 
 }
