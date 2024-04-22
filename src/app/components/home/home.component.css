@@ -5,20 +5,22 @@
   box-sizing: border-box;
 }
 
-html {
-  margin: 0; /* Elimina cualquier margen predeterminado */
-  padding: 0; /* Elimina cualquier padding predeterminado */
-  height: 100%; /* Asegura que el html ocupe toda la altura de la ventana */
-  width: 100%; /* Asegura que el html ocupe todo el ancho de la ventana */
-}
-
 /* Estilos para la barra de búsqueda */
 section {
   display: flex;
   justify-content: center; /* Centra la barra de búsqueda */
   padding: 10px;
   width: 100%; /* Ocupa todo el ancho */
-  margin-top: 60px; /* Ajusta la altura según la altura del header */
+  /*margin-top: 60px;*/
+  /*
+  Ajusta la altura según la altura del header,
+  (Galindo) Es porque el header y el footer estaban mal cuadrados,
+  ya lo arregle pero evita ponerle margenes a los componentes
+  muchas veces cuando uno le pone el margin se descuadran muchas cosas
+  cuando esta trabajando con flex o algo así, o para muchas pantallas se va a descuadrar
+  Usa padding si necesitas espacio
+  */
+
 }
 
 section input {
@@ -34,7 +36,7 @@ main {
   padding: 10px;
   margin: 0; /* Elimina el margen */
   flex-grow: 1; /* Hace que el main ocupe todo el espacio restante */
-  padding-bottom: 60px; /* Añade espacio inferior para evitar que el footer tape el área scrolleable */
+  /*padding-bottom: 60px; /* Añade espacio inferior para evitar que el footer tape el área scrolleable */
 }
 
 /* Estilos para la cuadrícula de propiedades */
@@ -67,7 +69,7 @@ main {
 }
 
 .property-card button {
-  margin: 10px;
+  /*margin: 10px;*/
   background-color: #a57fbe;
   color: #fff;
   border: none;

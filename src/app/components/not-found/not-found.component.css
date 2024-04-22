@@ -1,0 +1,17 @@
+.notFoundContainer {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notFoundMessage {
+  padding: 50px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 100px;
+  background: linear-gradient(to right, #0b3770, #2461ef);
+  background-clip: text;
+  color: transparent;
+}

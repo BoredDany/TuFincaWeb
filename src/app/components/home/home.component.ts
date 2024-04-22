@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { Property } from '../../models/Property';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { Router } from '@angular/router';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -9,7 +9,7 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent],
+  imports: [CommonModule, MenuComponent, FooterComponent, NgOptimizedImage],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

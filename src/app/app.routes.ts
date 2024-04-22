@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { MenuComponent } from './components/menu/menu.component';
 import { MainComponent } from './components/main/main.component';
-import { FooterComponent } from './components/footer/footer.component';
+import {HomeComponent} from "./components/home/home.component";
+import {NotFoundComponent} from "./components/not-found/not-found.component";
 
 export const routes: Routes = [
-    { path: 'main', component: MainComponent },
-    { path: 'menu', component: MenuComponent },
-    { path: 'footer', component: FooterComponent }
+    { path: 'login', component: MainComponent },
+    { path: 'home', component: HomeComponent },
+    { path: "**", component: NotFoundComponent }
 ];
