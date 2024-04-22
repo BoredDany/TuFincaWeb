@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "WebTuFinca": {
+    "TuFincaWeb": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/web-tu-finca",
+            "outputPath": "dist/tu-finca-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "WebTuFinca:build:production"
+              "buildTarget": "TuFincaWeb:build:production"
             },
             "development": {
-              "buildTarget": "WebTuFinca:build:development"
+              "buildTarget": "TuFincaWeb:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "WebTuFinca:build"
+            "buildTarget": "TuFincaWeb:build"
           }
         },
         "test": {
@@ -98,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "d0033aa6-b18b-4cbe-86bc-9b1edc1667b6"
+    "analytics": "8e17d6f6-361f-4e0d-8db6-20bb5dc8ea46"
   }
 }

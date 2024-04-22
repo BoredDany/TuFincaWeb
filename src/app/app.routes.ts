@@ -1,14 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { UserComponent } from './components/user/user.component';
-import { PropertyComponent } from './components/property/property.component';
-import { RequestRentComponent } from './components/request-rent/request-rent.component';
-import { MyPropertiesComponent } from './components/my-properties/my-properties.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { MainComponent } from './components/main/main.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
-    {path: 'user', component: UserComponent},
-    { path: 'property/:id', component: PropertyComponent },
-    { path: 'requestRent/:id', component: RequestRentComponent },
-    { path: 'myProperties', component: MyPropertiesComponent }
+    { path: 'main', component: MainComponent },
+    { path: 'menu', component: MenuComponent },
+    { path: 'footer', component: FooterComponent }
 ];
