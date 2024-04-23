@@ -1,0 +1,63 @@
+<!-- main.component.html -->
+<div class="formContainer"
+     data-aos="fade-right" data-aos-duration="1000"
+>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="userForm">
+
+
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input
+        matInput
+        #em
+        maxlength="256"
+        placeholder="Tu correo"
+        formControlName="email"
+        type="email"
+      >
+      <mat-hint align="end">{{em.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        #pass
+        maxlength="256"
+        placeholder="Tu contraseña"
+        formControlName="password"
+        type="password"
+      >
+      <mat-hint align="end">{{pass.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      type="submit"
+      color="primary"
+      class="sendButton"
+    >Entrar</button>
+
+    <p>
+      ¿No tienes una cuenta?
+      <button
+        mat-button
+        class="buttonCreate"
+        [routerLink]='["/register"]'
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        Crea una
+      </button>
+    </p>
+  </form>
+
+  <div class="registerMessage">
+    <h1 class="advise">
+      ¡Ingresa!
+    </h1>
+  </div>
+</div>
+

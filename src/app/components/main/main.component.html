@@ -1,5 +1,6 @@
-<!-- main.component.html -->
+
 <div class="formContainer"
+     data-aos="fade-left" data-aos-duration="1000"
 >
   <div class="registerMessage">
     <h1 class="advise">
@@ -63,9 +64,21 @@
       mat-flat-button
       type="submit"
       color="primary"
-      (click)="onSubmit"
       class="sendButton"
     >Enviar</button>
+
   </form>
 
+  <p>
+    ¿Ya tienes una cuenta?
+    <button
+      mat-button
+      class="buttonCreate"
+      routerLink="/login"
+
+    >
+      Ingresa
+    </button>
+  </p>
 </div>
+
