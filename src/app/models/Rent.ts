@@ -9,6 +9,7 @@ export class Rent {
     dateEnd: string;
     ratingOwner: number;
     ratingRenter: number;
+    rentStatus: number;
     status: Status;
     ownerId: number;
     renterId: number;
@@ -23,6 +24,7 @@ export class Rent {
         dateEnd: string,
         ratingOwner: number,
         ratingRenter: number,
+        rentStatus: number,
         status: Status,
         ownerId: number,
         renterId: number,
@@ -36,6 +38,7 @@ export class Rent {
         this.dateEnd = dateEnd;
         this.ratingOwner = ratingOwner;
         this.ratingRenter = ratingRenter;
+        this.rentStatus = rentStatus;
         this.status = status;
         this.ownerId = ownerId;
         this.renterId = renterId;

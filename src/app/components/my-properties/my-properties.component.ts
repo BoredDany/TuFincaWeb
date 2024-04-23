@@ -67,6 +67,21 @@ export class MyPropertiesComponent {
     }
   }
 
+  getRentStatus(rent: Rent) {
+    switch (rent.rentStatus) {
+      case Approval.PAYING:
+        return 'En proceso pago';
+      case Approval.PAYED:
+        return 'Pagado';
+      case Approval.CANCELLED:
+        return 'Cancelada';
+      case Approval.ENDED:
+        return 'Finalizada';
+      default:
+        return 'Estado desconocido';
+    }
+  }
+
   acceptRequest(request: RentRequest) {
     let rent: Rent = new Rent(
       0,
@@ -77,12 +92,13 @@ export class MyPropertiesComponent {
       request.dateEnd,
       0,
       0,
+      Approval.PAYING,
       Status.ACTIVE,
       request.ownerId,
       this.renterId,
       request.propertyId
     );
-    
+
     request.approval = Approval.ACCEPTED;
 
     this.rentService
@@ -97,10 +113,10 @@ export class MyPropertiesComponent {
     this.rentRequestService
       .putRentRequest(request)
       .then(() => {
-        console.log('Rent request rejected successfully');
+        console.log('Rent request accepted successfully');
       })
       .catch((error) => {
-        console.error('Error rejecting rent request:', error);
+        console.error('Error accepting rent request:', error);
       });
   }
 
@@ -116,14 +132,15 @@ export class MyPropertiesComponent {
       });
   }
 
-  cancelRent(idRent: number) {
+  cancelRent(rent: Rent) {
+    rent.rentStatus = Approval.CANCELLED;
     this.rentService
-      .deleteRent(idRent)
+      .putRent(rent)
       .then(() => {
         console.log('Rent canceled successfully');
       })
       .catch((error) => {
-        console.error('Error canceling rent request:', error);
+        console.error('Error canceling rent:', error);
       });
   }
 }

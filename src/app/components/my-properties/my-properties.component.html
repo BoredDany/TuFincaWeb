@@ -45,12 +45,13 @@
           <p>Fecha de incio: {{ rent.dateStart }}</p>
           <p>Fecha de fin: {{ rent.dateEnd }}</p>
           <p>Número de personas: {{ rent.numPeople }}</p>
+          <p>Estado: {{ getRentStatus(rent) }}</p>
           <p>Precio: {{ rent.price }}</p>
           <p>Pago: {{ rent.payment }}</p>
         </div>
         <button
-          [disabled]="rent.price == rent.payment"
-          (click)="cancelRent(rent.idRent)"
+          [disabled]="rent.rentStatus == approval.CANCELLED"
+          (click)="cancelRent(rent)"
         >
           Cancelar renta
         </button>
