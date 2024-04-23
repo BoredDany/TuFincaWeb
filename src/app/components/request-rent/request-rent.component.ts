@@ -11,6 +11,7 @@ import { User } from '../../models/User';
 import { UserService } from '../../services/users/user.service';
 import { RentRequestService } from '../../services/rentrequests/rent-request.service';
 import { Status } from '../../models/status';
+import { Approval } from '../../models/Approval';
 
 @Component({
   selector: 'app-request-rent',
@@ -20,10 +21,10 @@ import { Status } from '../../models/status';
   styleUrl: './request-rent.component.css',
 })
 export class RequestRentComponent {
-  rentRequest: RentRequest;
   property: Property;
   owner: User;
   renterId = 2; // TODO: get renterId from session
+  rentRequest: RentRequest;
 
   rentRequestForm = new FormGroup({
     dateStart: new FormControl(''),
@@ -37,9 +38,9 @@ export class RequestRentComponent {
     private userService: UserService,
     private rentRequestService: RentRequestService
   ) {
-    this.rentRequest = {} as RentRequest;
     this.property = {} as Property;
     this.owner = {} as User;
+    this.rentRequest = {} as RentRequest;
   }
 
   ngOnInit() {
@@ -120,17 +121,18 @@ export class RequestRentComponent {
       return;
     }
 
-    // If all validations pass, create rentRequest and post it
-    this.rentRequest.idRentRequest = 0;
-    this.rentRequest.dateStart = dateStart;
-    this.rentRequest.dateEnd = dateEnd;
-    this.rentRequest.numPeople = numPeople;
-    this.rentRequest.price = this.calculatePrice();
-    this.rentRequest.approval = 0;
-    this.rentRequest.ownerId = this.property.ownerId;
-    this.rentRequest.renterId = this.renterId; // TODO: get renterId from session
-    this.rentRequest.propertyId = this.property.idProperty;
-    this.rentRequest.status = Status.ACTIVE;
+    this.rentRequest = new RentRequest(
+      0,
+      dateStart,
+      dateEnd,
+      numPeople,
+      this.calculatePrice(),
+      Approval.INPROCESS,
+      this.property.ownerId,
+      this.renterId,
+      this.property.idProperty,
+      Status.ACTIVE
+    );
 
     this.rentRequestService
       .postRentRequest(this.rentRequest)
