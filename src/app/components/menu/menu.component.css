@@ -1,22 +1,28 @@
-/* Estilos para el header y la barra de navegación */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* El header ocupa todo el ancho de la página */
-    background-color: #430f66;
-    padding: 10px;
-    z-index: 1;
+#navbar-container {
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(to right, #0a1f88, #2461ef);
 }
 
-header nav {
-    display: flex;
-    justify-content: center; /* Centra el contenido de la barra de navegación */
-    width: 100%;
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-header nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #ffffff;
+.navBar a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.23);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.navBar a:hover {
+  text-decoration: none;
+  transform: scale(1.12);
+  border-radius: 10px;
 }
