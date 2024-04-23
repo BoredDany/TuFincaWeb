@@ -1,0 +1,84 @@
+
+<div class="formContainer"
+     data-aos="fade-left" data-aos-duration="1000"
+>
+  <div class="registerMessage">
+    <h1 class="advise">
+      ¡Registrate!
+    </h1>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="userForm">
+
+    <mat-form-field>
+      <mat-label>Nombre:</mat-label>
+      <input
+        matInput
+        #message
+        maxlength="256"
+        placeholder="Tu nombre"
+        formControlName="name"
+      >
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input
+        matInput
+        #em
+        maxlength="256"
+        placeholder="Tu correo"
+        formControlName="email"
+        type="email"
+      >
+      <mat-hint align="end">{{em.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Numero</mat-label>
+      <input
+        matInput
+        #num
+        maxlength="256"
+        placeholder="Tu telefon"
+        formControlName="phone"
+      >
+      <mat-hint align="end">{{num.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        #pass
+        maxlength="256"
+        placeholder="Tu contraseña"
+        formControlName="password"
+        type="password"
+      >
+      <mat-hint align="end">{{pass.value.length}} / 256</mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      type="submit"
+      color="primary"
+      class="sendButton"
+    >Enviar</button>
+
+  </form>
+
+  <p>
+    ¿Ya tienes una cuenta?
+    <button
+      mat-button
+      class="buttonCreate"
+      routerLink="/login"
+
+    >
+      Ingresa
+    </button>
+  </p>
+</div>
+

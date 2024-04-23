@@ -6,8 +6,15 @@ import { RequestRentComponent } from './components/request-rent/request-rent.com
 import { MyPropertiesComponent } from './components/my-properties/my-properties.component';
 import { RequestsandrentsComponent } from './components/requestsandrents/requestsandrents.component';
 import { EditRequestComponent } from './components/edit-request/edit-request.component';
+import {LoginComponent} from "./components/login/login.component";
+import { MainComponent } from './components/main/main.component';
 
 export const routes: Routes = [
+    { path: 'register', component: MainComponent },
+    { path: 'home', component: HomeComponent },
+    {path: 'login', component: LoginComponent},
+    {path: '', redirectTo: 'register', pathMatch : 'full'},
+    //{ path: "**", component: NotFoundComponent },
     {path: '', component: HomeComponent},
     {path: 'user', component: UserComponent},
     { path: 'property/:id', component: PropertyComponent },
