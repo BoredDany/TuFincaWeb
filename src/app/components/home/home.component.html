@@ -1,4 +1,4 @@
-<div style="height: 70%">
+<div>
   <section>
     <input type="text" placeholder="Buscar propiedad..." />
   </section>
@@ -6,7 +6,7 @@
   <main>
     <div *ngIf="properties.length > 0; else noProperties" class="property-grid">
       <div *ngFor="let property of properties" class="property-card">
-        <img ngSrc="'/assets/images/home.jpg'" alt="{{ property.name }}" fill/>
+        <img src="/assets/images/home.jpg" alt="{{ property.name }}" fill/>
         <div class="property-info">
           <h2>{{ property.name }}</h2>
           <p>País: {{ property.country }}</p>

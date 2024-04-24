@@ -1,0 +1,31 @@
+/* my-properties.component.css */
+
+main {
+    display: flex;
+    justify-content: space-between; /* Añade espacio entre las secciones */
+    padding: 1em;
+    height: calc(100vh - 2em - 100px); /* Resta la altura del menú, del pie de página y los márgenes */
+    overflow-y: auto;
+    margin: 50px 0; /* Aumenta el margen */
+  }
+  
+  .request-section,
+  .rent-section {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 40%; /* Cada sección ocupa el 40% de la página */
+  }
+  
+  .request-grid,
+  .rent-grid {
+    overflow-y: auto;
+  }
+  
+  .request-card,
+  .rent-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }

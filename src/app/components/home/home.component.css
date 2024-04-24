@@ -33,6 +33,7 @@ section input {
 
 /* Estilos para el contenedor principal */
 main {
+  overflow-y: auto;
   padding: 10px;
   margin: 0; /* Elimina el margen */
   flex-grow: 1; /* Hace que el main ocupe todo el espacio restante */
@@ -70,7 +71,7 @@ main {
 
 .property-card button {
   /*margin: 10px;*/
-  background-color: #a57fbe;
+  background-color: #2461ef;
   color: #fff;
   border: none;
   border-radius: 5px;

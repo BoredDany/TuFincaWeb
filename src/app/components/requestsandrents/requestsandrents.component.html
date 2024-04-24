@@ -1,4 +1,3 @@
-
 <main>
   <div class="request-section">
     <h1>Solicitudes de renta</h1>
@@ -14,18 +13,8 @@
           <p>Precio: {{ request.price }}</p>
           <p>Estado: {{ getApproval(request) }}</p>
         </div>
-        <button
-          [disabled]="request.approval !== approval.INPROCESS"
-          (click)="acceptRequest(request)"
-        >
-          Aceptar
-        </button>
-        <button
-          [disabled]="request.approval !== approval.INPROCESS"
-          (click)="rejectRequest(request)"
-        >
-          Rechazar
-        </button>
+        <button [disabled]="request.approval == approval.ACCEPTED" (click)="editRequest(request)">Editar</button>
+        <button [disabled]="request.approval == approval.ACCEPTED" (click)="deleteRequest(request.idRentRequest)">Eliminar</button>
       </div>
     </div>
     <ng-template #noRequests>
@@ -48,11 +37,9 @@
           <p>Precio: {{ rent.price }}</p>
           <p>Pago: {{ rent.payment }}</p>
         </div>
-        <button
-          [disabled]="rent.rentStatus == approval.CANCELLED"
-          (click)="cancelRent(rent)"
-        >
-          Cancelar renta
+        <button [disabled]="rent.rentStatus == approval.CANCELLED" (click)="cancelRent(rent)">Cancelar renta</button>
+        <button [disabled]="rent.rentStatus == approval.PAYED || rent.rentStatus == approval.CANCELLED" (click)="payRent(rent)">
+          Pagar renta
         </button>
       </div>
     </div>

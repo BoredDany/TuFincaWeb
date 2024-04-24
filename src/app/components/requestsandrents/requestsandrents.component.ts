@@ -1,30 +1,30 @@
 import { Component } from '@angular/core';
+import { RentRequest } from '../../models/RentRequest';
+import { Rent } from '../../models/Rent';
+import { Approval } from '../../models/Approval';
+import { RentRequestService } from '../../services/rentrequests/rent-request.service';
+import { RentService } from '../../services/rents/rent.service';
 import { MenuComponent } from '../menu/menu.component';
 import { FooterComponent } from '../footer/footer.component';
-import { RentRequest } from '../../models/RentRequest';
-import { RentRequestService } from '../../services/rentrequests/rent-request.service';
 import { CommonModule } from '@angular/common';
-import { Approval } from '../../models/Approval';
-import { Rent } from '../../models/Rent';
-import { Status } from '../../models/status';
-import { RentService } from '../../services/rents/rent.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-my-properties',
+  selector: 'app-requestsandrents',
   standalone: true,
   imports: [CommonModule, MenuComponent, FooterComponent],
-  templateUrl: './my-properties.component.html',
-  styleUrl: './my-properties.component.css',
+  templateUrl: './requestsandrents.component.html',
+  styleUrl: './requestsandrents.component.css',
 })
-export class MyPropertiesComponent {
+export class RequestsandrentsComponent {
   requests: RentRequest[] = [];
   rents: Rent[] = [];
   approval = Approval;
-  renterId = 2; // obtener del usuario loggeado
 
   constructor(
     private rentRequestService: RentRequestService,
-    private rentService: RentService
+    private rentService: RentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -82,53 +82,18 @@ export class MyPropertiesComponent {
     }
   }
 
-  acceptRequest(request: RentRequest) {
-    let rent: Rent = new Rent(
-      0,
-      request.numPeople,
-      request.price,
-      0,
-      request.dateStart,
-      request.dateEnd,
-      0,
-      0,
-      Approval.PAYING,
-      Status.ACTIVE,
-      request.ownerId,
-      this.renterId,
-      request.propertyId
-    );
-
-    request.approval = Approval.ACCEPTED;
-
-    this.rentService
-      .postRent(rent)
-      .then(() => {
-        console.log('Rent posted successfully');
-      })
-      .catch((error) => {
-        console.error('Error posting rent:', error);
-      });
-
-    this.rentRequestService
-      .putRentRequest(request)
-      .then(() => {
-        console.log('Rent request accepted successfully');
-      })
-      .catch((error) => {
-        console.error('Error accepting rent request:', error);
-      });
+  editRequest(rentRequest: RentRequest) {
+    this.router.navigate(['/editRequest', rentRequest.idRentRequest]);
   }
 
-  rejectRequest(request: RentRequest) {
-    request.approval = Approval.REJECTED;
+  deleteRequest(idRequest: number) {
     this.rentRequestService
-      .putRentRequest(request)
+      .deleteRentRequest(idRequest)
       .then(() => {
-        console.log('Rent request rejected successfully');
+        console.log('Rent request deleted successfully');
       })
       .catch((error) => {
-        console.error('Error rejecting rent request:', error);
+        console.error('Error deleting rent request:', error);
       });
   }
 
@@ -143,4 +108,6 @@ export class MyPropertiesComponent {
         console.error('Error canceling rent:', error);
       });
   }
+
+  payRent(rent: Rent) {}
 }

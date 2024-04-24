@@ -1,30 +1,34 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MenuComponent } from '../menu/menu.component';
-import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../footer/footer.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RentRequest } from '../../models/RentRequest';
 import { Property } from '../../models/Property';
+import { User } from '../../models/User';
 import { ActivatedRoute } from '@angular/router';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
-import { User } from '../../models/User';
 import { UserService } from '../../services/users/user.service';
 import { RentRequestService } from '../../services/rentrequests/rent-request.service';
-import { Status } from '../../models/status';
+import { RentRequest } from '../../models/RentRequest';
 import { Approval } from '../../models/Approval';
+import { Status } from '../../models/status';
 
 @Component({
-  selector: 'app-request-rent',
+  selector: 'app-edit-request',
   standalone: true,
   imports: [CommonModule, MenuComponent, FooterComponent, ReactiveFormsModule],
-  templateUrl: './request-rent.component.html',
-  styleUrl: './request-rent.component.css',
+  templateUrl: './edit-request.component.html',
+  styleUrl: './edit-request.component.css',
 })
-export class RequestRentComponent {
-  property: Property;
-  owner: User;
+export class EditRequestComponent {
+  startDate: String = {} as String;
+  endDate: String = {} as String;
+  numPeople: number = {} as number;
+  property = {} as Property;
+  owner = {} as User;
+  rentRequest = {} as RentRequest;
   renterId = 2; // TODO: get renterId from session
-  rentRequest: RentRequest;
+  totalPrice: number = 0;
 
   rentRequestForm = new FormGroup({
     dateStart: new FormControl(''),
@@ -44,14 +48,35 @@ export class RequestRentComponent {
   }
 
   ngOnInit() {
-    this.loadPropertyDetail();
+    this.loadRentRequest();
   }
 
-  loadPropertyDetail() {
+  loadRentRequest() {
     const idParam = this.route.snapshot.paramMap.get('id');
     const id = idParam ? +idParam : 0;
+    this.rentRequestService
+      .getRentRequestById(id)
+      .then((request) => {
+        this.rentRequest = request;
+        this.getProperty(this.rentRequest.propertyId);
+
+        // Set the initial values of the form controls
+      this.rentRequestForm.patchValue({
+        dateStart: this.rentRequest.dateStart,
+        dateEnd: this.rentRequest.dateEnd,
+        numPeople: this.rentRequest.numPeople.toString(),
+      });
+
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  getProperty(propertyId: number) {
     this.propertyService
-      .getPropertybyId(id)
+      .getPropertybyId(propertyId)
       .then((property) => {
         this.property = property;
         this.getOwner();
@@ -83,7 +108,7 @@ export class RequestRentComponent {
     return numPeople ? numPeople * +this.property.price : 0;
   }
 
-  requestRent() {
+  updateRequest() {
     const dateStartControl = this.rentRequestForm.get('dateStart');
     const dateEndControl = this.rentRequestForm.get('dateEnd');
     const numPeopleControl = this.rentRequestForm.get('numPeople');
@@ -121,21 +146,16 @@ export class RequestRentComponent {
       return;
     }
 
-    this.rentRequest = new RentRequest(
-      0,
-      dateStart,
-      dateEnd,
-      numPeople,
-      this.calculatePrice(),
-      Approval.INPROCESS,
-      this.property.ownerId,
-      this.renterId,
-      this.property.idProperty,
-      Status.ACTIVE
-    );
+    this.rentRequest.dateStart = dateStart;
+    this.rentRequest.dateEnd = dateEnd;
+    this.rentRequest.numPeople = numPeople;
+    this.rentRequest.price = this.calculatePrice();
+    this.rentRequest.approval = Approval.INPROCESS;
+
+    console.log('Rent request modificated');
 
     this.rentRequestService
-      .postRentRequest(this.rentRequest)
+      .putRentRequest(this.rentRequest)
       .then(() => {
         console.log('Rent request posted successfully');
       })
