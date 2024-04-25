@@ -6,6 +6,7 @@ import {AuthService} from "../../services/auth/auth.service";
 import {LoginForm} from "../../utils/schemas/AuthTypes";
 import {Router} from "@angular/router";
 import {routes} from "../../app-routing.module";
+import {log} from "node:util";
 
 @Component({
   selector: 'app-login',
@@ -26,23 +27,25 @@ export class LoginComponent {
     private router: Router
   ) {
     AOS.init()
-    AOS.refresh()
+    //AOS.refresh()
   }
 
-  showError() {
+  showError(msg: string) {
     this.messageService.add({
-      severity: 'error', summary: '¡Ups!', detail: 'Estas bobo o que'
+      severity: 'error', summary: '¡Ups!', detail: msg
     })
   }
 
   async onSubmit() {
-    console.log(this.form.value);
-    if (!this.form.valid) this.showError()
+    if (!this.form.valid) this.showError("Revisa los datos ingresados")
     else {
-      const loginForm : LoginForm = Object.create(this.form.value)
-      const data = await this.authService.handleLogin(loginForm)
-      console.log(data)
-      this.router.navigate(["/home"])
+      const loginForm : LoginForm = {
+        email: this.form.value.email!!,
+        password: this.form.value.password!!
+      }
+      const valid = await this.authService.handleLogin(loginForm)
+      if (valid) this.router.navigate(["home"])
+      else this.showError("Algunos de tus datos son incorrectos")
     }
   }
 }

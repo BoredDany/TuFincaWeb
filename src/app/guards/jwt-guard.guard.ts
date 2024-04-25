@@ -11,7 +11,6 @@ export const jwtGuardGuard: CanActivateFn = (
     router.navigate(["/login"])
     return false;
   } else {
-    router.navigate(["/home"])
     return true;
   }
 };

@@ -14,6 +14,8 @@ import {jwtGuardGuard} from "./guards/jwt-guard.guard";
 
 export const routes: Routes = [
 
+  { path: 'register', component: MainComponent },
+  { path: 'login', component: LoginComponent},
   { path: "", canActivate: [jwtGuardGuard], children: [
       {path: 'user', component: UserComponent},
       { path: 'property/:id', component: PropertyComponent },
@@ -24,8 +26,6 @@ export const routes: Routes = [
       { path: 'home', component: HomeComponent,},
     ]
   },
-  { path: 'register', component: MainComponent },
-  {path: 'login', component: LoginComponent},
   { path: "**", component: NotFoundComponent }
 ];
 

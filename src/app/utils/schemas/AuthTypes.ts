@@ -6,7 +6,7 @@ type LoginForm =  {
 type RegisterForm = {
   name: string,
   email: string,
-  number: string,
+  phone: number,
   password: string
 }
 
