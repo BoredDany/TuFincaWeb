@@ -1,0 +1,21 @@
+<main>
+  <div class="payment-section">
+    <h1>Realizar Pago de la Renta</h1>
+    <div *ngIf="rents && rents.length > 0; else noRents" class="rent-grid">
+      <div *ngFor="let rent of rents" class="rent-card">
+        <div class="rent-info">
+          <h2>Pago de Renta</h2>
+          <p>Propiedad: {{ rent.propertyId }}</p>
+          <p>Solicitante: {{ rent.renterId }}</p>
+          <p>Fecha de inicio: {{ rent.dateStart | date:'dd/MM/yyyy' }}</p>
+          <p>Fecha de fin: {{ rent.dateEnd | date:'dd/MM/yyyy' }}</p>
+        </div>
+        <button (click)="makePayment(rent)">Pagar Renta</button>
+
+      </div>
+    </div>
+    <ng-template #noRents>
+      <p>No hay rentas pendientes de pago.</p>
+    </ng-template>
+  </div>
+</main>

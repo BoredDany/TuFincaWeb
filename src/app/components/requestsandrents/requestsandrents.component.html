@@ -38,9 +38,7 @@
           <p>Pago: {{ rent.payment }}</p>
         </div>
         <button [disabled]="rent.rentStatus == approval.CANCELLED" (click)="cancelRent(rent)">Cancelar renta</button>
-        <button [disabled]="rent.rentStatus == approval.PAYED || rent.rentStatus == approval.CANCELLED" (click)="payRent(rent)">
-          Pagar renta
-        </button>
+        <button [disabled]="rent.rentStatus == approval.PAYED || rent.rentStatus == approval.CANCELLED" (click)="payRent(rent)">Pagar renta</button>
       </div>
     </div>
 

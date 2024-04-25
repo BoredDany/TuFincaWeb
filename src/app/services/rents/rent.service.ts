@@ -7,6 +7,7 @@ import { Rent } from '../../models/Rent';
   providedIn: 'root'
 })
 export class RentService {
+  [x: string]: any;
 
   private deployUrl = 'https://gruposjaveriana.dynaco.co/grupo23/rents/';
   private localUrl = 'http://localhost:8080/grupo23/rents/';

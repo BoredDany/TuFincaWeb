@@ -1,0 +1,28 @@
+/* my-properties.component.css */
+
+main {
+  display: flex;
+  justify-content: center; /* Centra la sección de pago */
+  padding: 1em;
+  height: calc(100vh - 2em - 100px);
+  overflow-y: auto;
+  margin: 50px 0;
+}
+
+.payment-section {
+  width: 60%; /* Ocupa el 60% del ancho disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+.rent-grid {
+  overflow-y: auto;
+}
+
+.rent-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}

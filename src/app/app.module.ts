@@ -22,6 +22,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import { ToastModule } from 'primeng/toast';
+import { PayComponent } from './components/pay/pay.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ToastModule } from 'primeng/toast';
     RequestRentComponent,
     RequestsandrentsComponent,
     UserComponent,
-    EditRequestComponent
+    EditRequestComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,

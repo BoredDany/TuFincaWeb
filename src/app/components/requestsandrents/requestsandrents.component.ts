@@ -107,5 +107,8 @@ export class RequestsandrentsComponent {
       });
   }
 
-  payRent(rent: Rent) {}
+  payRent(rent: Rent) {
+
+    this.router.navigate(['/pay', rent.idRent]);
+  }
 }

@@ -11,6 +11,7 @@ import {MainComponent} from "./components/main/main.component";
 import {LoginComponent} from "./components/login/login.component";
 import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {jwtGuardGuard} from "./guards/jwt-guard.guard";
+import {PayComponent } from './components/pay/pay.component';
 
 export const routes: Routes = [
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
       { path: 'myProperties', component: MyPropertiesComponent },
       { path: 'requestsAndRents', component: RequestsandrentsComponent },
       { path: 'editRequest/:id', component: EditRequestComponent },
+      { path: 'pay/:id', component: PayComponent},
       { path: 'home', component: HomeComponent,},
     ]
   },
