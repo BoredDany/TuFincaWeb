@@ -27,6 +27,9 @@ import { ToastModule } from 'primeng/toast';
 import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
+import {ImageModule } from 'primeng/image'
+import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import {InputTextModule} from "primeng/inputtext";
     CardModule,
     ButtonModule,
     InputTextModule,
+    ImageModule,
+    CalendarModule,
+    InputNumberModule
   ],
   bootstrap: [AppComponent],
   providers: [

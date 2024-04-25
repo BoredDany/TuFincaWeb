@@ -22,6 +22,8 @@ export class PropertyComponent {
     this.property = {} as Property;
   }
 
+  loading: boolean = false;
+
   ngOnInit(): void {
     this.loadPropertyDetail();
   }
@@ -35,11 +37,13 @@ export class PropertyComponent {
         this.property = property;
       })
       .catch((error) => {
+        this.loading = false;
         console.error(error);
       });
   }
 
   requestProperty () {
+    this.loading = true;
     this.router.navigate(['/requestRent', this.property.idProperty]);
   }
 

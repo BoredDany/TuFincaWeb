@@ -33,6 +33,7 @@ mat-form-field {
   font-weight: 600;
   font-size: 100px;
   background: linear-gradient(to right, #0b3770, #2461ef);
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }

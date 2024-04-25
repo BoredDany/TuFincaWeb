@@ -19,6 +19,7 @@ form {
 /* Estilos para los elementos de fecha */
 .date-fields {
   display: flex;
+  justify-content: center;
   align-items: center; /* Alinear verticalmente */
 }
 

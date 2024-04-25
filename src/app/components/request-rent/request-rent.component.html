@@ -4,21 +4,29 @@
     <h1>Request Rent</h1>
     <div class="date-fields">
       <p>Start Date</p>
-      <input
+      <!-- <input
         type="date"
         formControlName="dateStart"
         [(ngModel)]="rentRequest.dateStart"
-      />
+      /> -->
+      <p-calendar formControlName="dateStart" [(ngModel)]="rentRequest.dateStart"></p-calendar>
     </div>
 
     <div class="date-fields">
       <p>End Date</p>
-      <input
+      <!-- <input
         type="date"
         formControlName="dateEnd"
         [(ngModel)]="rentRequest.dateEnd"
-      />
+      /> -->
+      <p-calendar formControlName="dateEnd" [(ngModel)]="rentRequest.dateEnd"></p-calendar>
     </div>
+
+    <!-- <p-inputNumber [(ngModel)]="rentRequest.numPeople" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" decrementButtonClass="p-button-secondary"
+    incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
+     decrementButtonIcon="pi pi-minus" 
+     formControlName="numPeople"
+     ></p-inputNumber> -->
 
     <input
       type="number"

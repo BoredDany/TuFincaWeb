@@ -1,7 +1,15 @@
 
 <main class="main-content">
   <div class="property-image">
-    <img [src]="'/assets/images/home.jpg'" alt="{{ property.name }}" />
+    <!-- <p-image 
+    imageClass="imageProperty" 
+    [src]="'/assets/images/home.jpg'" 
+    alt="{{property.name}}" 
+    [preview]="true"
+    ></p-image> -->
+
+    <img src="/assets/images/home.jpg" class="imageProperty" alt="{{property.name}}" />
+  
   </div>
   <div class="property-data">
     <h2>{{ property.name }}</h2>
@@ -20,7 +28,8 @@
     <p>Owner: {{ property.ownerId }}</p>
 
     <div class="buttons">
-      <button (click)="requestProperty()">Request Rent</button>
+      <p-button (click)="requestProperty()" [loading]="loading" label="Submit" icon="pi pi-check"></p-button>
+      <!-- <button (click)="requestProperty()" class="requestButton">Request Rent</button> -->
     </div>
   </div>
 </main>
