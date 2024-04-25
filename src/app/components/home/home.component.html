@@ -1,19 +1,34 @@
-<div>
-  <section>
-    <input type="text" placeholder="Buscar propiedad..." />
-  </section>
+<div  data-aos="fade-right" data-aos-duration="1500">
+  <div class="card flex justify-content-center">
+    <span class="p-float-label" style="width: 30%">
+        <input pInputText id="username" class="searchBox" />
+        <label for="username">Busqueda</label>
+    </span>
+  </div>
 
   <main>
     <div *ngIf="properties.length > 0; else noProperties" class="property-grid">
-      <div *ngFor="let property of properties" class="property-card">
-        <img src="/assets/images/home.jpg" alt="{{ property.name }}" fill/>
-        <div class="property-info">
-          <h2>{{ property.name }}</h2>
+
+      <div  *ngFor="let property of properties" class="card flex justify-content-center property-card">
+
+        <p-card
+          header="{{ property.name }}"
+          subheader="${{property.price}}"
+          [style]="{ width: '100%' }"
+
+        >
+          <ng-template pTemplate="header">
+            <img alt="Card" src="/assets/images/home.jpg" />
+          </ng-template>
+
           <p>País: {{ property.country }}</p>
           <p>Ciudad: {{ property.city }}</p>
-          <p>Precio: {{ property.price }}</p>
-        </div>
-        <button (click)="viewProperty(property)">See more</button>
+          {{property.description}}
+
+          <ng-template pTemplate="footer">
+            <p-button  (click)="viewProperty(property)" label="See more" icon="pi pi-check"></p-button>
+          </ng-template>
+        </p-card>
       </div>
     </div>
 

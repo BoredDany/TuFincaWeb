@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import axios, {AxiosError} from "axios";
+import axios from "axios";
 import {LoginForm, RegisterForm} from "../../utils/schemas/AuthTypes";
-
-import {User} from "../../models/User";
 import {environment} from "../../environment/environment";
 
 @Injectable({
@@ -24,8 +22,14 @@ export class AuthService {
         url: `${environment.backendURL}/auth/login`
       })
 
-      if (data.data.status == "OK") localStorage.setItem("jwt", data.data.data.results || "sitiene")
-      else throw data
+      if (data.data.status == "OK") {
+
+        const userResponse = await axios.get(
+        `${environment.backendURL}/users/email/${user.email}`
+        );
+
+        localStorage.setItem("jwt", JSON.stringify(userResponse.data.data.results) || "sitiene")
+      } else throw data
     } catch (e: any) {
       console.log(e)
       return false;

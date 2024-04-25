@@ -24,6 +24,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import { ToastModule } from 'primeng/toast';
+import {CardModule} from "primeng/card";
+import {ButtonModule} from "primeng/button";
+import {InputTextModule} from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { ToastModule } from 'primeng/toast';
     BrowserAnimationsModule,
     RouterLink,
     RouterLinkActive,
-    ToastModule
+    ToastModule,
+    CardModule,
+    ButtonModule,
+    InputTextModule,
   ],
   bootstrap: [AppComponent],
   providers: [

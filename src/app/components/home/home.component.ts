@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { Property } from '../../models/Property';
 import { Router } from '@angular/router';
+import AOS from 'aos'
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,9 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+
+  value = ""
+
   title = 'Home';
   properties: Property[] = [];
 
@@ -19,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProperties();
+    AOS.init();
   }
 
   loadProperties (){
