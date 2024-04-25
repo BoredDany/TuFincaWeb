@@ -44,7 +44,7 @@ main {
 .property-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr); /* 6 columnas */
-  gap: 20px;
+  gap: 5px;
   padding: 20px; /* Padding interno de la cuadrícula */
 }
 
@@ -52,11 +52,10 @@ main {
 .property-card {
   display: flex;
   flex-direction: column; /* Ordena los elementos verticalmente */
-  border: 1px solid #000;
-  border-radius: 5px;
   overflow: hidden;
   margin: 0; /* Elimina el margen */
   padding: 10px; /* Padding interno */
+  text-align: center;
 }
 
 .property-card img {
@@ -69,18 +68,31 @@ main {
   text-align: center;
 }
 
-.property-card button {
-  /*margin: 10px;*/
-  background-color: #2461ef;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
 
 /* Ajusta el espacio entre las palabras en las tarjetas */
 .property-card h2,
 .property-card p {
   margin: 0; /* Quita espacio adicional */
+}
+
+.p-card-body {
+  width: 100%;
+}
+
+.searchBox {
+  width: 50%;
+  height: 40px;
+  padding: 10px;
+}
+
+.card {
+  background: var(--surface-card);
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
