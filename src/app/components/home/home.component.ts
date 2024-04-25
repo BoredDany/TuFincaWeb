@@ -8,8 +8,6 @@ import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent, NgOptimizedImage],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

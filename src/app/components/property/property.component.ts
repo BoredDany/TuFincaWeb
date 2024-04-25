@@ -8,8 +8,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-property',
-  standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent],
   templateUrl: './property.component.html',
   styleUrl: './property.component.css',
 })

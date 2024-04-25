@@ -15,8 +15,6 @@ import { Status } from '../../models/status';
 
 @Component({
   selector: 'app-edit-request',
-  standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent, ReactiveFormsModule],
   templateUrl: './edit-request.component.html',
   styleUrl: './edit-request.component.css',
 })

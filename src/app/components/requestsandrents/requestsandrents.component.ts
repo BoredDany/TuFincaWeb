@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-requestsandrents',
-  standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent],
   templateUrl: './requestsandrents.component.html',
   styleUrl: './requestsandrents.component.css',
 })

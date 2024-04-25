@@ -15,8 +15,6 @@ import { Approval } from '../../models/Approval';
 
 @Component({
   selector: 'app-request-rent',
-  standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent, ReactiveFormsModule],
   templateUrl: './request-rent.component.html',
   styleUrl: './request-rent.component.css',
 })

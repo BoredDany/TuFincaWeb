@@ -7,7 +7,6 @@ export class User {
         public phone: number,
         public photo: string,
         public status: string
-
     ){}
 
 }

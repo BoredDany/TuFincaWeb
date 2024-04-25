@@ -11,8 +11,6 @@ import { RentService } from '../../services/rents/rent.service';
 
 @Component({
   selector: 'app-my-properties',
-  standalone: true,
-  imports: [CommonModule, MenuComponent, FooterComponent],
   templateUrl: './my-properties.component.html',
   styleUrl: './my-properties.component.css',
 })
