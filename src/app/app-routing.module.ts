@@ -27,7 +27,8 @@ export const routes: Routes = [
       { path: 'editRequest/:id', component: EditRequestComponent },
       { path: 'home', component: HomeComponent,},
       { path: 'payRent/:id', component: PayComponent },
-      { path: 'addProperty', component: AddPropertyComponent}
+      { path: 'addProperty', component: AddPropertyComponent},
+      { path: 'addProperty', component: AddPropertyComponent},
     ]
   },
   { path: "**", component: NotFoundComponent }

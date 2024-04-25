@@ -1,1 +1,106 @@
-<p>add-property works!</p>
+<p-toast></p-toast>
+
+<div class="form-container">
+  <form [formGroup]="propertyForm" (ngSubmit)="submitProperty()">
+    <h1>Add property</h1>
+
+    <label>
+      Name:
+      <input
+        type="text"
+        formControlName="nameProperty"
+      />
+    </label>
+
+    <label>
+      Country:
+      <input
+        type="text"
+        formControlName="country"
+      />
+    </label>
+
+    <label>
+      City:
+      <input type="text" formControlName="city" />
+    </label>
+
+    <label>
+      Latitude:
+      <input
+        type="text"
+        formControlName="latitude"
+      />
+    </label>
+
+    <label>
+      Longitude:
+      <input
+        type="text"
+        formControlName="longitude"
+      />
+    </label>
+
+    <label>
+      Price:
+      <input
+        type="number"
+        formControlName="price"
+      />
+    </label>
+
+    <label>
+      Area:
+      <input type="number" formControlName="area" />
+    </label>
+
+    <label>
+      Description:
+      <textarea
+        formControlName="description"
+      ></textarea>
+    </label>
+
+    <label>
+      Rooms:
+      <input
+        type="number"
+        formControlName="rooms"
+      />
+    </label>
+
+    <label>
+      Bathrooms:
+      <input
+        type="number"
+        formControlName="bathrooms"
+      />
+    </label>
+
+    <label>
+      Parking:
+      <input
+        type="number"
+        formControlName="parking"
+      />
+    </label>
+
+    <label>
+      Kitchens:
+      <input
+        type="number"
+        formControlName="kitchens"
+      />
+    </label>
+
+    <label>
+      Floors:
+      <input
+        type="number"
+        formControlName="floors"
+      />
+    </label>
+
+    <button type="submit">Save property</button>
+  </form>
+</div>
