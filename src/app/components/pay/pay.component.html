@@ -1,0 +1,23 @@
+<div class="form-container">
+    <form [formGroup]="paymentForm" (ngSubmit)="makePayment()">
+      <h1>Make Payment</h1>
+
+      <div class="account-fields">
+        <p>Cuenta</p>
+        <select formControlName="account">
+          <option *ngFor="let account of accounts" [value]="account.bank">{{account.bank}}  :  {{account.accountNumber}}</option>
+        </select>
+      </div>
+
+      <div class="amount-fields">
+        <p>Cantidad a Pagar</p>
+        <input
+          type="number"
+          formControlName="amount"
+          readonly
+        />
+      </div>
+
+      <button type="submit">Pagar</button>
+    </form>
+  </div>

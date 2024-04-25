@@ -80,6 +80,12 @@ export class RequestsandrentsComponent {
     }
   }
 
+  setButtonsStatus(rent: Rent){
+    return rent.rentStatus == Approval.PAYED ||
+    rent.rentStatus == Approval.CANCELLED ||
+    rent.rentStatus == Approval.ENDED;
+  }
+
   editRequest(rentRequest: RentRequest) {
     this.router.navigate(['/editRequest', rentRequest.idRentRequest]);
   }
@@ -107,5 +113,7 @@ export class RequestsandrentsComponent {
       });
   }
 
-  payRent(rent: Rent) {}
+  payRent(rent: Rent) {
+    this.router.navigate(['/payRent', rent.idRent]);
+  }
 }

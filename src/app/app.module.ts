@@ -13,6 +13,8 @@ import {PropertyComponent} from "./components/property/property.component";
 import {RequestRentComponent} from "./components/request-rent/request-rent.component";
 import {RequestsandrentsComponent} from "./components/requestsandrents/requestsandrents.component";
 import {UserComponent} from "./components/user/user.component";
+import { PayComponent } from "./components/pay/pay.component";
+import { AddPropertyComponent } from "./components/add-property/add-property.component";
 import {MatFormField, MatHint, MatLabel} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {EditRequestComponent} from "./components/edit-request/edit-request.component";
@@ -37,7 +39,9 @@ import { ToastModule } from 'primeng/toast';
     RequestRentComponent,
     RequestsandrentsComponent,
     UserComponent,
-    EditRequestComponent
+    EditRequestComponent,
+    PayComponent,
+    AddPropertyComponent
   ],
   imports: [
     BrowserModule,

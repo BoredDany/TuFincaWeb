@@ -1,4 +1,3 @@
-
 <main>
   <div class="request-section">
     <h1>Solicitudes de renta</h1>
@@ -48,10 +47,7 @@
           <p>Precio: {{ rent.price }}</p>
           <p>Pago: {{ rent.payment }}</p>
         </div>
-        <button
-          [disabled]="rent.rentStatus == approval.CANCELLED"
-          (click)="cancelRent(rent)"
-        >
+        <button [disabled]="setButtonsStatus(rent)" (click)="cancelRent(rent)">
           Cancelar renta
         </button>
       </div>

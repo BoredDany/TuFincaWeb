@@ -80,6 +80,12 @@ export class MyPropertiesComponent {
     }
   }
 
+  setButtonsStatus(rent: Rent){
+    return rent.rentStatus == Approval.PAYED ||
+    rent.rentStatus == Approval.CANCELLED ||
+    rent.rentStatus == Approval.ENDED;
+  }
+
   acceptRequest(request: RentRequest) {
     let rent: Rent = new Rent(
       0,
