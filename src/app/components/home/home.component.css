@@ -8,89 +8,97 @@
 /* Estilos para la barra de búsqueda */
 section {
   display: flex;
-  justify-content: center; /* Centra la barra de búsqueda */
+  justify-content: center;
   padding: 10px;
-  width: 100%; /* Ocupa todo el ancho */
-  /*margin-top: 60px;*/
-  /*
-  Ajusta la altura según la altura del header,
-  (Galindo) Es porque el header y el footer estaban mal cuadrados,
-  ya lo arregle pero evita ponerle margenes a los componentes
-  muchas veces cuando uno le pone el margin se descuadran muchas cosas
-  cuando esta trabajando con flex o algo así, o para muchas pantallas se va a descuadrar
-  Usa padding si necesitas espacio
-  */
-
+  width: 100%;
 }
 
 section input {
-  width: 70%; /* Ajusta el ancho del input según tus necesidades */
+  width: 70%;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño del input */
 }
 
 /* Estilos para el contenedor principal */
 main {
   overflow-y: auto;
   padding: 10px;
-  margin: 0; /* Elimina el margen */
-  flex-grow: 1; /* Hace que el main ocupe todo el espacio restante */
-  /*padding-bottom: 60px; /* Añade espacio inferior para evitar que el footer tape el área scrolleable */
+  margin: 0;
+  flex-grow: 1;
 }
 
 /* Estilos para la cuadrícula de propiedades */
 .property-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); /* 6 columnas */
+  grid-template-columns: repeat(3, 1fr);
   gap: 5px;
-  padding: 20px; /* Padding interno de la cuadrícula */
+  padding: 20px;
 }
 
-/* Estilos para las tarjetas de propiedad */
+/* Estilos generales de las tarjetas de propiedad */
 .property-card {
   display: flex;
-  flex-direction: column; /* Ordena los elementos verticalmente */
+  flex-direction: row; /* Cambiado de column a row */
   overflow: hidden;
-  margin: 5px; /* Ajusta el margen */
-  padding: 5px; /* Ajusta el padding interno */
+  margin: 1px;
+  padding: 15px;
   text-align: center;
-  font-size: 0.8em; /* Ajusta el tamaño de la fuente */
+  font-size: 0.8em;
+  border: 1px solid transparent; /* Preparación para hover */
+  transition: border 300ms ease-in-out;
+}
+
+.property-card:hover {
+  border: 3px solid dodgerblue;
 }
 
 .property-card img {
-  width: 100%; /* Imagen ocupa todo el ancho */
+  width: 100%;
   height: auto;
 }
 
-.property-card .property-info {
-  padding: 10px; /* Ajusta el padding interno de la información */
-  text-align: center;
-}
-
-
-/* Ajusta el espacio entre las palabras en las tarjetas */
-.property-card h2,
-.property-card p {
-  margin: 0; /* Quita espacio adicional */
-}
-
-.p-card-body {
+/* División del contenido de la tarjeta */
+.flex-container {
+  display: flex;
   width: 100%;
 }
 
-.searchBox {
-  width: 50%;
-  height: 40px;
-  padding: 10px;
+.image-container {
+  flex: 3;  /* Ajustar según la proporción deseada */
+  padding: 5px;
 }
 
+.content-container {
+  flex: 2;  /* Ajustar según la proporción deseada */
+  padding: 5px;
+  text-align: left;
+}
 
-.card {
+.property-title {
+  margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+.property-details {
+  text-align: left; /* Asegura que los detalles estén alineados a la izquierda */
+  margin-left: 20px; /* Aumenta el margen izquierdo para separar del título */
+}
+
+.centered-btn {
+  display: flex;
+  justify-content: center; /* Centra el botón horizontalmente */
+  width: 100%;
+}
+
+.property-card p, .property-card h2 {
+  margin: 0;
+  padding: 2px 0;
+}
+
+.card { 
   background: var(--surface-card);
-  padding: 1rem; /* Ajusta el padding */
-  border-radius: 5px; /* Ajusta el border-radius para hacer las tarjetas más cuadradas */
+  padding: 1rem;
+  border-radius: 10px;
   margin-bottom: 1rem;
 }
 
@@ -98,4 +106,10 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.searchBox {
+  width: 100%;
+  height: 30px;
+  padding: 9px;
 }

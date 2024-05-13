@@ -1,7 +1,7 @@
 <div  data-aos="fade-right" data-aos-duration="1500">
   <div class="card flex justify-content-center">
     <span class="p-float-label" style="width: 30%">
-        <input pInputText id="username" class="searchBox" />
+        <input pInputText id="username" class="searchBox"/>
         <label for="username">Busqueda</label>
     </span>
   </div>
@@ -9,26 +9,23 @@
   <main>
     <div *ngIf="properties.length > 0; else noProperties" class="property-grid">
 
-      <div  *ngFor="let property of properties" class="card flex justify-content-center property-card">
-
-        <p-card
-          header="{{ property.name }}"
-          subheader="${{property.price}}"
-          [style]="{ width: '100%' }"
-
-        >
-          <ng-template pTemplate="header">
+      <div *ngFor="let property of properties" class="card flex justify-content-center property-card">
+        <div class="flex-container">
+          <!-- Sección de la imagen -->
+          <div class="image-container">
             <img alt="Card" src="/assets/images/home.jpg" />
-          </ng-template>
-
-          <p>País: {{ property.country }}</p>
-          <p>Ciudad: {{ property.city }}</p>
-          {{property.description}}
-
-          <ng-template pTemplate="footer">
-            <p-button  (click)="viewProperty(property)" label="See more" icon="pi pi-check"></p-button>
-          </ng-template>
-        </p-card>
+          </div>
+          <!-- Sección del contenido -->
+          <div class="content-container">
+            <h2 class="property-title" style="text-align: center;">{{ property.name }}</h2>
+            <div class="property-details" style="text-align: left;">
+              <p>País: {{ property.country }}</p>
+              <p>Ciudad: {{ property.city }}</p>
+              <p>{{ property.description }}</p>
+            </div>
+            <p-button class="centered-btn" (click)="viewProperty(property)" label="See more" icon="pi pi-check"></p-button>
+          </div>
+        </div>
       </div>
     </div>
 

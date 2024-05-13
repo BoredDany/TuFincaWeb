@@ -1,31 +1,104 @@
-/* my-properties.component.css */
+/* Restablece los márgenes y paddings globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Estilos para la barra de búsqueda */
+section {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+section input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos para el contenedor principal */
 main {
-  display: flex;
-  justify-content: space-between; /* Añade espacio entre las secciones */
-  padding: 1em;
-  height: calc(100vh - 2em - 100px); /* Resta la altura del menú, del pie de página y los márgenes */
   overflow-y: auto;
-  margin: 50px 0; /* Aumenta el margen */
+  padding: 10px;
+  margin: 0;
+  flex-grow: 1;
 }
 
-.request-section,
-.rent-section {
+/* Contenedor principal horizontal para las secciones de rentas y solicitudes */
+.horizontal-container {
   display: flex;
-  flex-direction: column;
-  flex: 0 0 40%; /* Cada sección ocupa el 40% de la página */
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.request-grid,
-.rent-grid {
-  overflow-y: auto;
+/* Estilos generales para las secciones de rentas y solicitudes */
+.rent-section,
+.request-section {
+  width: 45%; /* Ajusta el tamaño de cada sección */
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.request-card,
-.rent-card {
+/* Configuración de la cuadrícula para las tarjetas de rentas y solicitudes */
+.rent-grid,
+.request-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px; /* Espacio entre tarjetas */
+}
+
+/* Estilos para las tarjetas de renta y solicitudes de renta */
+.rent-card,
+.request-card {
+  flex: 1 1 300px; /* Crecen para ocupar espacio pero no menos de 300px */
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 1em;
   margin-bottom: 1em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: border 300ms ease-in-out;
+  background: var(--surface-card);
+}
+
+.rent-card:hover,
+.request-card:hover {
+  border: 2px solid cadetblue;
+}
+
+.highlight-border {
+  border: 2px solid cadetblue;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column; /* Mejor organización del contenido dentro de la tarjeta */
+}
+
+.info-container {
+  padding: 5px;
+  text-align: left;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Distribuye botones uniformemente */
+  padding-top: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
 }

@@ -1,10 +1,10 @@
 <main>
   <div class="request-section">
-    <h1>Solicitudes de renta</h1>
+    <h1>Solicitudes de Rentas</h1>
     <div *ngIf="requests.length > 0; else noRequests" class="request-grid">
-      <div *ngFor="let request of requests" class="request-card">
+      <div *ngFor="let request of requests; let i = index" class="request-card">
         <div class="request-info">
-          <h2>Solicitud de renta</h2>
+          <h2>Solicitud De Renta N°{{ i + 1 }}</h2>
           <p>Propiedad: {{ request.propertyId }}</p>
           <p>Solicitante: {{ request.renterId }}</p>
           <p>Fecha de incio: {{ request.dateStart }}</p>
@@ -34,10 +34,10 @@
 
   <div class="rent-section">
     <h1>Rentas</h1>
-    <div *ngIf="rents.length > 0; else noRents" class="rent-grid">
-      <div *ngFor="let rent of rents" class="rent-card">
+    <div *ngIf="rents.length > 0; else noRents"  class="rent-grid">
+      <div *ngFor="let rent of rents ; let i = index" class="rent-card">
         <div class="rent-info">
-          <h2>Renta</h2>
+          <h2>Renta N°{{ i + 1 }}</h2>
           <p>Propiedad: {{ rent.propertyId }}</p>
           <p>Solicitante: {{ rent.renterId }}</p>
           <p>Fecha de incio: {{ rent.dateStart }}</p>
