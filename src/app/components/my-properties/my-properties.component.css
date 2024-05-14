@@ -28,19 +28,39 @@ main {
   flex-grow: 1;
 }
 
-/* Contenedor principal horizontal para las secciones de rentas y solicitudes */
-.horizontal-container {
+/* Contenedor principal vertical para las secciones de rentas y solicitudes */
+.vertical-container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Estilos generales para las secciones de rentas y solicitudes */
 .rent-section,
 .request-section {
-  width: 45%; /* Ajusta el tamaño de cada sección */
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+}
+
+/* Contenedores desplazables horizontalmente */
+.horizontal-scroll-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 15px; /* Espacio entre tarjetas */
+  padding: 10px; /* Espacio alrededor de los elementos */
+}
+
+/* Ocultar barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari, Opera GX) */
+.horizontal-scroll-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* También se puede usar display: none; */
+}
+
+/* Ocultar barra de desplazamiento en Firefox */
+.horizontal-scroll-container {
+  scrollbar-width: none; /* Firefox */
 }
 
 /* Configuración de la cuadrícula para las tarjetas de rentas y solicitudes */
@@ -48,16 +68,18 @@ main {
 .request-grid {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px; /* Espacio entre tarjetas */
+  flex-wrap: nowrap;
+  gap: 15px; /* Espacio entre tarjetas */
 }
 
 /* Estilos para las tarjetas de renta y solicitudes de renta */
 .rent-card,
 .request-card {
   flex: 1 1 300px; /* Crecen para ocupar espacio pero no menos de 300px */
+  max-width: 350px; /* Ancho máximo para las tarjetas */
+  max-height: 500px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 1em;
   margin-bottom: 1em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
@@ -67,32 +89,33 @@ main {
 
 .rent-card:hover,
 .request-card:hover {
-  border: 2px solid cadetblue;
+  border: 2px solid blue;
 }
 
 .highlight-border {
-  border: 2px solid cadetblue;
+  border: 2px solid blue;
 }
 
 .flex-container {
   display: flex;
-  flex-direction: column; /* Mejor organización del contenido dentro de la tarjeta */
+  flex-direction: column; 
 }
 
 .info-container {
   padding: 5px;
-  text-align: left;
+  text-align: center;
 }
 
 .button-container {
   display: flex;
-  justify-content: space-between; /* Distribuye botones uniformemente */
+  justify-content: space-between;
   padding-top: 10px;
 }
 
 button {
   padding: 8px 16px;
   border-radius: 5px;
+  margin-right: 10px;
   border: none;
   background-color: dodgerblue;
   color: white;
@@ -101,4 +124,14 @@ button {
 
 button:disabled {
   background-color: #ccc;
+}
+
+.rent-card h2,
+.request-card h2 {
+  text-align: center;
+}
+
+.request-info,
+.rent-info {
+  padding: 24px;
 }

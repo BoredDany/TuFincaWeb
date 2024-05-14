@@ -34,7 +34,7 @@ export class MyPropertiesComponent {
     this.rentRequestService
       .getRentRequests()
       .then((requests) => {
-        this.requests = requests;
+        this.requests = requests.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
       .catch((error) => {
         console.error(error);
@@ -45,7 +45,7 @@ export class MyPropertiesComponent {
     this.rentService
       .getRents()
       .then((rents) => {
-        this.rents = rents;
+        this.rents = rents.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
       .catch((error) => {
         console.error(error);
@@ -80,53 +80,47 @@ export class MyPropertiesComponent {
     }
   }
 
-  setButtonsStatus(rent: Rent) {
-    return (
-      rent.rentStatus == Approval.PAYED ||
-      rent.rentStatus == Approval.CANCELLED ||
-      rent.rentStatus == Approval.ENDED
-    );
+  setButtonsStatus(rent: Rent){
+    return rent.rentStatus == Approval.PAYED ||
+    rent.rentStatus == Approval.CANCELLED ||
+    rent.rentStatus == Approval.ENDED;
   }
 
-  async acceptRequest(request: RentRequest) {
-    try {
-      request.approval = Approval.ACCEPTED;
-      await this.rentRequestService.putRentRequest(request);
-      console.log('Rent request accepted successfully');
-      await this.postRent(request);
-      console.log('Rent posted successfully');
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-  postRent(request: RentRequest): Promise<void> {
+  acceptRequest(request: RentRequest) {
     let rent: Rent = new Rent(
       0,
       request.numPeople,
       request.price,
+      0,
       request.dateStart,
       request.dateEnd,
       0,
       0,
-      0,
+      Approval.PAYING,
       Status.ACTIVE,
       request.ownerId,
-      request.renterId,
-      request.propertyId,
-      Approval.PAYING
+      this.renterId,
+      request.propertyId
     );
 
-    console.log('Rent:', rent);
+    request.approval = Approval.ACCEPTED;
 
-    return this.rentService
+    this.rentService
       .postRent(rent)
       .then(() => {
         console.log('Rent posted successfully');
       })
       .catch((error) => {
         console.error('Error posting rent:', error);
-        throw error;
+      });
+
+    this.rentRequestService
+      .putRentRequest(request)
+      .then(() => {
+        console.log('Rent request accepted successfully');
+      })
+      .catch((error) => {
+        console.error('Error accepting rent request:', error);
       });
   }
 

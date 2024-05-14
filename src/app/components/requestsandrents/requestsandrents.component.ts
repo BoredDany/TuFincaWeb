@@ -34,7 +34,7 @@ export class RequestsandrentsComponent {
     this.rentRequestService
       .getRentRequests()
       .then((requests) => {
-        this.requests = requests;
+        this.requests = requests.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
       .catch((error) => {
         console.error(error);
@@ -45,7 +45,7 @@ export class RequestsandrentsComponent {
     this.rentService
       .getRents()
       .then((rents) => {
-        this.rents = rents;
+        this.rents = rents.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
       .catch((error) => {
         console.error(error);

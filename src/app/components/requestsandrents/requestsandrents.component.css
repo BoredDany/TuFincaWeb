@@ -1,31 +1,127 @@
-/* my-properties.component.css */
+/* Restablece los márgenes y paddings globales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Estilos para la barra de búsqueda */
+section {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+}
+
+section input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Estilos para el contenedor principal */
 main {
-    display: flex;
-    justify-content: space-between; /* Añade espacio entre las secciones */
-    padding: 1em;
-    height: calc(100vh - 2em - 100px); /* Resta la altura del menú, del pie de página y los márgenes */
-    overflow-y: auto;
-    margin: 50px 0; /* Aumenta el margen */
-  }
-  
-  .request-section,
-  .rent-section {
-    display: flex;
-    flex-direction: column;
-    flex: 0 0 40%; /* Cada sección ocupa el 40% de la página */
-  }
-  
-  .request-grid,
-  .rent-grid {
-    overflow-y: auto;
-  }
-  
-  .request-card,
-  .rent-card {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 1em;
-    margin-bottom: 1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  }
+  padding: 10px;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* Contenedor principal horizontal para las secciones de rentas y solicitudes */
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px; /* Añade espacio entre las dos secciones */
+}
+
+/* Estilos generales para las secciones de rentas y solicitudes */
+.rent-section,
+.request-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+  width: 48%; /* Ajusta el tamaño de cada sección */
+  height: 80vh; /* Altura fija para el contenedor desplazable */
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+  padding: 10px; /* Espacio alrededor de los elementos */
+}
+
+/* Configuración de la cuadrícula para las tarjetas de rentas y solicitudes */
+.rent-grid,
+.request-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio entre tarjetas */
+  width: 100%; /* Asegura que las tarjetas ocupen el ancho completo del contenedor */
+  align-items: center; /* Centra las tarjetas dentro de la cuadrícula */
+}
+
+/* Estilos para las tarjetas de renta y solicitudes de renta */
+.rent-card,
+.request-card {
+  flex: 1 1 auto; /* Crecen para ocupar espacio pero no menos de 300px */
+  max-width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 1em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: border 300ms ease-in-out;
+  background: var(--surface-card);
+}
+
+.rent-card:hover,
+.request-card:hover {
+  border: 2px solid blue;
+}
+
+.highlight-border {
+  border: 2px solid blue;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column; 
+}
+
+.info-container {
+  padding: 5px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+.rent-card h2,
+.request-card h2 {
+  text-align: center;
+}
+
+.request-info,
+.rent-info {
+  padding: 25px;
+}
+
+/* Ocultar barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari, Opera GX) */
+.rent-section::-webkit-scrollbar,
+.request-section::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* También se puede usar display: none; */
+}

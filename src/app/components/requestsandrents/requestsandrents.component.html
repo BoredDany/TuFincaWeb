@@ -1,63 +1,58 @@
 <main>
-  <div class="request-section">
-    <h1>Solicitudes de renta</h1>
-    <div *ngIf="requests.length > 0; else noRequests" class="request-grid">
-      <div *ngFor="let request of requests" class="request-card">
-        <div class="request-info">
-          <h2>Solicitud de renta</h2>
-          <p>Propiedad: {{ request.propertyId }}</p>
-          <p>Solicitante: {{ request.renterId }}</p>
-          <p>Fecha de incio: {{ request.dateStart }}</p>
-          <p>Fecha de fin: {{ request.dateEnd }}</p>
-          <p>Número de personas: {{ request.numPeople }}</p>
-          <p>Precio: {{ request.price }}</p>
-          <p>Estado: {{ getApproval(request) }}</p>
+  <div class="horizontal-container">
+    <div class="rent-section">
+      <h1>Rentas</h1>
+      <div *ngIf="rents.length > 0; else noRents" class="rent-grid">
+        <div *ngFor="let rent of rents; let i = index" class="rent-card">
+          <div class="rent-info">
+            <h2>Renta N°{{ i + 1 }}</h2>
+            <p>Propiedad: {{ rent.propertyId }}</p>
+            <p>Solicitante: {{ rent.renterId }}</p>
+            <p>Fecha de incio: {{ rent.dateStart }}</p>
+            <p>Fecha de fin: {{ rent.dateEnd }}</p>
+            <p>Número de personas: {{ rent.numPeople }}</p>
+            <p>Estado: {{ getRentStatus(rent) }}</p>
+            <p>Precio: {{ rent.price }}</p>
+            <p>Pago: {{ rent.payment }}</p>
+          </div>
+          <button [disabled]="setButtonsStatus(rent)" (click)="cancelRent(rent)">
+            Cancelar renta
+          </button>
+          <button [disabled]="setButtonsStatus(rent)" (click)="payRent(rent)">
+            Pagar renta
+          </button>
         </div>
-        <button
-          [disabled]="request.approval == approval.ACCEPTED"
-          (click)="editRequest(request)"
-        >
-          Editar
-        </button>
-        <button
-          [disabled]="request.approval == approval.ACCEPTED"
-          (click)="deleteRequest(request.idRentRequest)"
-        >
-          Eliminar
-        </button>
       </div>
-    </div>
-    <ng-template #noRequests>
-      <p>Finding rent resquests, might be possible that you don't have any request.</p>
-    </ng-template>
-  </div>
-
-  <div class="rent-section">
-    <h1>Rentas</h1>
-    <div *ngIf="rents.length > 0; else noRents" class="rent-grid">
-      <div *ngFor="let rent of rents" class="rent-card">
-        <div class="rent-info">
-          <h2>Renta</h2>
-          <p>Propiedad: {{ rent.propertyId }}</p>
-          <p>Solicitante: {{ rent.renterId }}</p>
-          <p>Fecha de incio: {{ rent.dateStart }}</p>
-          <p>Fecha de fin: {{ rent.dateEnd }}</p>
-          <p>Número de personas: {{ rent.numPeople }}</p>
-          <p>Estado: {{ getRentStatus(rent) }}</p>
-          <p>Precio: {{ rent.price }}</p>
-          <p>Pago: {{ rent.payment }}</p>
-        </div>
-        <button [disabled]="setButtonsStatus(rent)" (click)="cancelRent(rent)">
-          Cancelar renta
-        </button>
-        <button [disabled]="setButtonsStatus(rent)" (click)="payRent(rent)">
-          Pagar renta
-        </button>
-      </div>
+      <ng-template #noRents>
+        <p>Finding rents...</p>
+      </ng-template>
     </div>
 
-    <ng-template #noRents>
-      <p>Finding rents...</p>
-    </ng-template>
+    <div class="request-section">
+      <h1>Solicitudes de Rentas</h1>
+      <div *ngIf="requests.length > 0; else noRequests" class="request-grid">
+        <div *ngFor="let request of requests; let i = index" class="request-card">
+          <div class="request-info">
+            <h2>Solicitud De Renta N°{{ i + 1 }}</h2>
+            <p>Propiedad: {{ request.propertyId }}</p>
+            <p>Solicitante: {{ request.renterId }}</p>
+            <p>Fecha de incio: {{ request.dateStart }}</p>
+            <p>Fecha de fin: {{ request.dateEnd }}</p>
+            <p>Número de personas: {{ request.numPeople }}</p>
+            <p>Precio: {{ request.price }}</p>
+            <p>Estado: {{ getApproval(request) }}</p>
+          </div>
+          <button [disabled]="request.approval !== approval.INPROCESS" (click)="editRequest(request)">
+            Editar
+          </button>
+          <button [disabled]="request.approval !== approval.INPROCESS" (click)="deleteRequest(request.idRentRequest)">
+            Eliminar
+          </button>
+        </div>
+      </div>
+      <ng-template #noRequests>
+        <p>Finding rent requests...</p>
+      </ng-template>
+    </div>
   </div>
 </main>
