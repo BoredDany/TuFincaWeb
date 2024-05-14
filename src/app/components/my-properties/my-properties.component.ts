@@ -86,43 +86,49 @@ export class MyPropertiesComponent {
     rent.rentStatus == Approval.ENDED;
   }
 
-  acceptRequest(request: RentRequest) {
+  async acceptRequest(request: RentRequest) {
+    try {
+      request.approval = Approval.ACCEPTED;
+      await this.rentRequestService.putRentRequest(request);
+      console.log('Rent request accepted successfully');
+      await this.postRent(request);
+      console.log('Rent posted successfully');
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+
+  postRent(request: RentRequest): Promise<void> {
     let rent: Rent = new Rent(
       0,
       request.numPeople,
       request.price,
-      0,
       request.dateStart,
       request.dateEnd,
       0,
       0,
-      Approval.PAYING,
+      0,
       Status.ACTIVE,
       request.ownerId,
-      this.renterId,
-      request.propertyId
+      request.renterId,
+      request.propertyId,
+      Approval.PAYING
     );
 
-    request.approval = Approval.ACCEPTED;
+    console.log('Rent:', rent);
 
-    this.rentService
+    return this.rentService
       .postRent(rent)
       .then(() => {
         console.log('Rent posted successfully');
       })
       .catch((error) => {
         console.error('Error posting rent:', error);
-      });
-
-    this.rentRequestService
-      .putRentRequest(request)
-      .then(() => {
-        console.log('Rent request accepted successfully');
-      })
-      .catch((error) => {
-        console.error('Error accepting rent request:', error);
+        throw error;
       });
   }
+  
 
   rejectRequest(request: RentRequest) {
     request.approval = Approval.REJECTED;
