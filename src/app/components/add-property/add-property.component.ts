@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Status } from '../../models/status';
 import { MessageService } from 'primeng/api';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-property',
@@ -13,7 +14,7 @@ import { PropertyServiceService } from '../../services/properties/property-servi
 })
 export class AddPropertyComponent {
   property: Property;
-  user = 2;
+  user = JSON.parse(localStorage.getItem("user")!!);
 
   propertyForm = new FormGroup({
     nameProperty: new FormControl(''),
@@ -33,7 +34,8 @@ export class AddPropertyComponent {
 
   constructor(
     private messageService: MessageService,
-    private propertyService: PropertyServiceService
+    private propertyService: PropertyServiceService,
+    private router: Router
   ) {
     this.property = {} as Property;
   }
@@ -100,7 +102,7 @@ export class AddPropertyComponent {
         kitchensNumber,
         floorsNumber,
         Status.ACTIVE,
-        this.user,
+        this.user.idUser,
         [],
         [],
         []
@@ -111,6 +113,7 @@ export class AddPropertyComponent {
         .postProperty(this.property)
         .then(() => {
           console.log('Property posted successfully');
+          this.router.navigate(['/home'])
         })
         .catch((error) => {
           console.error('Error posting property:', error);

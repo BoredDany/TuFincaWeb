@@ -15,26 +15,46 @@ export class RentRequestService {
 
   //GET
   getRentRequests(): Promise<RentRequest []>{
-    return axios.get<RentRequest []>(this.localUrl).then(response => response.data);
+    return axios.get<RentRequest []>(this.localUrl, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //GET BY ID
   getRentRequestById(id: number): Promise<RentRequest>{
-    return axios.get<RentRequest>(this.localUrl + id).then(response => response.data);
+    return axios.get<RentRequest>(this.localUrl + id, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //POST 
   postRentRequest(rentRequest: RentRequest): Promise<RentRequest>{
-    return axios.post<RentRequest>(this.localUrl, rentRequest).then(response => response.data);
+    return axios.post<RentRequest>(this.localUrl, rentRequest, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //PUT
   putRentRequest(rentRequest: RentRequest): Promise<RentRequest>{
-    return axios.put<RentRequest>(this.localUrl + rentRequest.idRentRequest, rentRequest).then(response => response.data);
+    return axios.put<RentRequest>(this.localUrl + rentRequest.idRentRequest, rentRequest, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //DELETE
   deleteRentRequest(id: number): Promise<RentRequest>{
-    return axios.delete<RentRequest>(this.localUrl + id).then(response => response.data);
+    return axios.delete<RentRequest>(this.localUrl + id, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 }

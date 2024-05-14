@@ -5,7 +5,7 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RentRequest } from '../../models/RentRequest';
 import { Property } from '../../models/Property';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { User } from '../../models/User';
 import { UserService } from '../../services/users/user.service';
@@ -21,7 +21,7 @@ import { Approval } from '../../models/Approval';
 export class RequestRentComponent {
   property: Property;
   owner: User;
-  renterId = 2; // TODO: get renterId from session
+  renterId = JSON.parse(localStorage.getItem("user")!!).idUser; // TODO: get renterId from session
   rentRequest: RentRequest;
 
   rentRequestForm = new FormGroup({
@@ -31,6 +31,7 @@ export class RequestRentComponent {
   });
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private propertyService: PropertyServiceService,
     private userService: UserService,
@@ -136,6 +137,7 @@ export class RequestRentComponent {
       .postRentRequest(this.rentRequest)
       .then(() => {
         console.log('Rent request posted successfully');
+        this.router.navigate(['/home'])
       })
       .catch((error) => {
         console.error('Error posting rent request:', error);

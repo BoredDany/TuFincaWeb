@@ -16,27 +16,47 @@ export class PropertyServiceService {
 
   //GET
   getProperties(): Promise<Property []>{
-    return axios.get<Property []>(this.localUrl).then(response => response.data);
+    return axios.get<Property []>(this.localUrl, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //GET BY ID
   getPropertybyId(id: number): Promise<Property>{
-    return axios.get<Property>(this.localUrl + id).then(response => response.data);
+    return axios.get<Property>(this.localUrl + id , {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //POST 
   postProperty(property: Property): Promise<Property>{
-    return axios.post<Property>(this.localUrl, property).then(response => response.data);
+    return axios.post<Property>(this.localUrl, property , {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //PUT
   updateProperty(property: Property): Promise<Property>{
-    return axios.put<Property>(this.localUrl + property.idProperty, property).then(response => response.data);
+    return axios.put<Property>(this.localUrl + property.idProperty, property , {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
   //DELETE
   deleteProperty(id: number): Promise<Property>{
-    return axios.delete<Property>(this.localUrl + id).then(response => response.data);
+    return axios.delete<Property>(this.localUrl + id, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
   }
 
 }
