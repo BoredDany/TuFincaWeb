@@ -75,28 +75,10 @@ export class PayComponent {
   }
 
   makePayment() {
-    //registrar pago
-    this.payment = new Payment(
-      0,
-      2,
-      this.rent.ownerId,
-      this.rent.idRent,
-      this.rent.price,
-      Status.ACTIVE
-    );
-
-    this.paymentService
-      .postPayment(this.payment)
-      .then(() => {
-        console.log('Payment posted successfully');
-      })
-      .catch((error) => {
-        console.error('Error posting payment:', error);
-      });
-
     //cambiar estado de renta
 
     this.rent.rentStatus = Approval.PAYED;
+    this.rent.payment = this.rent.price;
 
     this.rentService
       .putRent(this.rent)
