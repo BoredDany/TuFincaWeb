@@ -30,6 +30,12 @@ import {InputTextModule} from "primeng/inputtext";
 import {ImageModule } from 'primeng/image'
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { StepperModule } from 'primeng/stepper';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { CommonModule } from "@angular/common";
+import {ToggleButtonModule} from 'primeng/togglebutton'
+import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -67,7 +73,13 @@ import { InputNumberModule } from 'primeng/inputnumber';
     InputTextModule,
     ImageModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    StepperModule,
+    IconFieldModule,
+    InputIconModule,
+    CommonModule,
+    ToggleButtonModule,
+    PasswordModule
   ],
   bootstrap: [AppComponent],
   providers: [
