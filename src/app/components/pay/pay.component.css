@@ -1,35 +1,49 @@
-form-container {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin: 50px auto;
-    padding: 1em;
+.form-container {
+    width: 100%;
+    max-width: 400px; /* Maximum width for the form */
+    margin: 7% auto; /* Horizontally centered with 50px margin on top and bottom */
+    padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+h1 {
+    text-align: center;
 }
 
 .account-fields,
 .amount-fields {
-    margin-bottom: 1em;
+    margin-bottom: 20px;
+}
+
+.account-fields p,
+.amount-fields p {
+    margin: 0;
+}
+
+select,
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
 button[type="submit"] {
-    cursor: pointer;
+    width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
-    color: white;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff; /* Blue */
     border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-    transition: background-color 0.3s;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #0056b3; /* Color change when hovering */
 }
