@@ -5,79 +5,76 @@
   box-sizing: border-box;
 }
 
-/* Estilos para la barra de búsqueda */
-section {
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  width: 100%;
+/* Estilos para el contenedor del body y el main */
+body, html {
+  overflow: hidden;
+  height: 100%;
 }
 
-section input {
-  width: 70%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-/* Estilos para el contenedor principal */
 main {
-  overflow-y: auto;
+  height: 100vh;
+  overflow-y: scroll;
   padding: 10px;
   margin: 0;
   flex-grow: 1;
 }
 
-/* Contenedor principal vertical para las secciones de rentas y solicitudes */
+/* Contenedor principal vertical */
 .vertical-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Estilos generales para las secciones de rentas y solicitudes */
+/* Secciones de rentas y solicitudes */
 .rent-section,
 .request-section {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-}
-
-/* Contenedores desplazables horizontalmente */
-.horizontal-scroll-container {
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  gap: 15px; /* Espacio entre tarjetas */
-  padding: 10px; /* Espacio alrededor de los elementos */
-}
-
-/* Ocultar barra de desplazamiento en navegadores basados en WebKit (Chrome, Safari, Opera GX) */
-.horizontal-scroll-container::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* También se puede usar display: none; */
-}
-
-/* Ocultar barra de desplazamiento en Firefox */
-.horizontal-scroll-container {
-  scrollbar-width: none; /* Firefox */
-}
-
-/* Configuración de la cuadrícula para las tarjetas de rentas y solicitudes */
-.rent-grid,
-.request-grid {
-  display: flex;
-  flex-direction: row;
   flex-wrap: nowrap;
-  gap: 15px; /* Espacio entre tarjetas */
+  width: 100%;
+}
+
+/* Contenedor con scroll horizontal */
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 15px;
+  padding: 10px;
+  height: 100%;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.horizontal-scroll-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
 }
 
 /* Estilos para las tarjetas de renta y solicitudes de renta */
+.rent-grid,
+.request-grid {
+  display: flex;
+  flex-direction: row; /* Cambiar a disposición horizontal */
+  gap: 15px; /* Espacio entre las tarjetas */
+}
+
 .rent-card,
 .request-card {
-  flex: 1 1 300px; /* Crecen para ocupar espacio pero no menos de 300px */
-  max-width: 350px; /* Ancho máximo para las tarjetas */
+  flex: 1 1 auto;
+  max-width: 300px;
   max-height: 500px;
+  min-height: 350px;
+  min-width: 300px;
   border: 1px solid #ccc;
   border-radius: 12px;
   padding: 1em;
@@ -96,36 +93,6 @@ main {
   border: 2px solid blue;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column; 
-}
-
-.info-container {
-  padding: 5px;
-  text-align: center;
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
-}
-
-button {
-  padding: 8px 16px;
-  border-radius: 5px;
-  margin-right: 10px;
-  border: none;
-  background-color: dodgerblue;
-  color: white;
-  cursor: pointer;
-}
-
-button:disabled {
-  background-color: #ccc;
-}
-
 .rent-card h2,
 .request-card h2 {
   text-align: center;
@@ -133,5 +100,124 @@ button:disabled {
 
 .request-info,
 .rent-info {
-  padding: 24px;
+  padding: 25px;
+}
+
+/* Estilos de los botones */
+button {
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-width: 120px; /* Ancho mínimo del botón */
+  min-height: 36px; /* Altura mínima del botón */
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button.cancel-button:hover {
+  background-color: red;
+}
+
+button.accept-button:hover {
+  background-color: green;
+}
+
+button.reject-button:hover {
+  background-color: red;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+button.cancel-button.clicked {
+  animation: changeToRed 1s forwards;
+  background-color: red;
+}
+
+button.accept-button.clicked {
+  animation: changeToGreen 1s forwards;
+  background-color: green;
+}
+
+button.reject-button.clicked {
+  animation: changeToRed 1s forwards;
+  background-color: red;
+}
+
+@keyframes changeToRed {
+  from {
+    background-color: dodgerblue;
+  }
+  to {
+    background-color: red;
+  }
+}
+
+@keyframes changeToGreen {
+  from {
+    background-color: dodgerblue;
+  }
+  to {
+    background-color: green;
+  }
+}
+
+/* Cambiar texto al pasar el mouse por encima */
+button::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+button.cancel-button:hover::after {
+  content: attr(data-hover-text);
+}
+
+button.accept-button:hover::after {
+  content: attr(data-hover-text);
+}
+
+button.reject-button:hover::after {
+  content: attr(data-hover-text);
+}
+
+button.cancel-button.clicked::after {
+  content: '✘';
+}
+
+button.accept-button.clicked::after {
+  content: '✔';
+}
+
+button.reject-button.clicked::after {
+  content: '✘';
+}
+
+button.cancel-button.clicked,
+button.accept-button.clicked,
+button.reject-button.clicked {
+  color: white;
+}
+
+button.cancel-button,
+button.accept-button,
+button.reject-button {
+  transition: background-color 1s ease;
+}
+
+button.accept-button {
+  margin-right: 10px;
 }
