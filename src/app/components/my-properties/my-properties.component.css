@@ -119,19 +119,19 @@ button {
   min-height: 36px; /* Altura mínima del botón */
 }
 
-button:hover {
+button:hover:not(:disabled) {
   transform: scale(1.05);
 }
 
-button.cancel-button:hover {
+button.cancel-button:hover:not(:disabled) {
   background-color: red;
 }
 
-button.accept-button:hover {
+button.accept-button:hover:not(:disabled) {
   background-color: green;
 }
 
-button.reject-button:hover {
+button.reject-button:hover:not(:disabled) {
   background-color: red;
 }
 
@@ -182,15 +182,15 @@ button::after {
   transition: opacity 0.3s ease;
 }
 
-button.cancel-button:hover::after {
+button.cancel-button:hover:not(:disabled)::after {
   content: attr(data-hover-text);
 }
 
-button.accept-button:hover::after {
+button.accept-button:hover:not(:disabled)::after {
   content: attr(data-hover-text);
 }
 
-button.reject-button:hover::after {
+button.reject-button:hover:not(:disabled)::after {
   content: attr(data-hover-text);
 }
 
@@ -218,6 +218,7 @@ button.reject-button {
   transition: background-color 1s ease;
 }
 
+/* Agregar margen derecho al botón de aceptar para separar de rechazar */
 button.accept-button {
   margin-right: 10px;
 }
