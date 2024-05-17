@@ -29,7 +29,10 @@ import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
 import {ImageModule } from 'primeng/image'
 import { CalendarModule } from 'primeng/calendar';
+import { TabViewModule } from 'primeng/tabview';
+import { AvatarModule } from 'primeng/avatar';
 import { InputNumberModule } from 'primeng/inputnumber';
+
 
 @NgModule({
   declarations: [
@@ -67,7 +70,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
     InputTextModule,
     ImageModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    TabViewModule, 
+    AvatarModule
   ],
   bootstrap: [AppComponent],
   providers: [

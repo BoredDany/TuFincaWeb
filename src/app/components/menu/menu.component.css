@@ -1,28 +1,44 @@
+/* Estilos para el contenedor del navbar */
 #navbar-container {
   width: 100%;
   height: 10%;
-  background: linear-gradient(to right, #0a1f88, #2461ef);
+  background: linear-gradient(to right, #153448, #3C5B6F);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Estilos para la barra de navegación */
 .navBar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100%;
+  width: 70%;
   height: 100%;
 }
 
+/* Estilos para los enlaces */
 .navBar a {
   color: #ffffff;
   text-decoration: none;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, 0.23);
+  padding: 10px 20px;
+  background-color: #3C5B6F;
   border-radius: 10px;
   transition: all 0.3s ease;
-}
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} 
 
 .navBar a:hover {
-  text-decoration: none;
-  transform: scale(1.12);
-  border-radius: 10px;
+  background-color: #948979; 
+  color: #ffffff; 
+  transform: scale(1.1);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Agrega animación de pulsación al hacer clic */
+.navBar a:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
