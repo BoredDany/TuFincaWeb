@@ -113,3 +113,15 @@ main {
   height: 30px;
   padding: 9px;
 }
+
+.centered-btn:hover {
+  background-color: #DFD0B8;
+}
+
+.centered-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
+}

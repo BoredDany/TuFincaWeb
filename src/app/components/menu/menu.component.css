@@ -2,7 +2,7 @@
 #navbar-container {
   width: 100%;
   height: 10%;
-  background: linear-gradient(to right, #153448, #3C5B6F);
+  background: #153448;
   display: flex;
   justify-content: center;
   align-items: center;

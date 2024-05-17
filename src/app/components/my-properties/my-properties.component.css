@@ -86,11 +86,11 @@ main {
 
 .rent-card:hover,
 .request-card:hover {
-  border: 2px solid blue;
+  border: 2px solid dodgerblue;
 }
 
 .highlight-border {
-  border: 2px solid blue;
+  border: 2px solid dodgerblue;
 }
 
 .rent-card h2,
