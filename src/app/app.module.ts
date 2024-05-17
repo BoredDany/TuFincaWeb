@@ -36,6 +36,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { CommonModule } from "@angular/common";
 import {ToggleButtonModule} from 'primeng/togglebutton'
 import { PasswordModule } from 'primeng/password';
+import { MapComponent } from "./components/map/map.component";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { PasswordModule } from 'primeng/password';
     UserComponent,
     EditRequestComponent,
     PayComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

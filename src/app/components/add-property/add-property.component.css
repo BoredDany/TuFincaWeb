@@ -54,4 +54,8 @@ body {
 
   .p-stepper {
     flex-basis: 40rem;
-} 
+  }
+  .mapContainer {
+    width: 100%;
+    height: 600px;
+  }

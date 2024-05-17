@@ -16,28 +16,9 @@
               </button>
           </ng-template>
           <ng-template pTemplate="content" let-nextCallback="nextCallback">
-              <div class="flex flex-column gap-2 mx-auto" style="min-height: 16rem; max-width: 20rem">
-                  <div class="text-center mt-3 mb-3 text-xl font-semibold">Create your account</div>
-                  <div class="field p-fluid">
-                      <p-iconField>
-                          <p-inputIcon>
-                              <i class="pi pi-user"></i>
-                          </p-inputIcon>
-                          <input pInputText id="input" type="text" placeholder="Name" />
-                      </p-iconField>
-                  </div>
-                  <div class="field p-fluid">
-                      <p-iconField>
-                          <p-inputIcon>
-                              <i class="pi pi-envelope"></i>
-                          </p-inputIcon>
-                          <input pInputText id="email" type="email" placeholder="Email" />
-                      </p-iconField>
-                  </div>
-                  <div class="field p-fluid">
-                      <p-password placeholder="Password" />
-                  </div>
-              </div>
+            <div class="mapContainer">
+              <app-map></app-map>
+            </div>
               <div class="flex pt-4 justify-content-end">
                   <p-button (onClick)="nextCallback.emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" />
               </div>

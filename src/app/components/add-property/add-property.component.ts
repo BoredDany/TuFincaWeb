@@ -5,6 +5,9 @@ import { Status } from '../../models/status';
 import { MessageService } from 'primeng/api';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
 import { Router } from '@angular/router';
+import { Map, View } from 'ol';
+import TitleLayer from 'ol/layer/Tile'
+import { OSM } from 'ol/source';
 
 @Component({
   selector: 'app-add-property',
@@ -15,7 +18,7 @@ import { Router } from '@angular/router';
 export class AddPropertyComponent {
   property: Property;
   user = JSON.parse(localStorage.getItem("user")!!);
-  
+
   active: number = 0;
 
     name: string = "";
