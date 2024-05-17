@@ -6,7 +6,6 @@ import { UserService } from '../../services/users/user.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { User } from '../../models/User';
 
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -14,52 +13,55 @@ import { User } from '../../models/User';
   providers: [MessageService]
 })
 export class UserComponent implements OnInit {
-  form!: FormGroup;
+updateUser() {
+throw new Error('Method not implemented.');
+}
+  form: FormGroup;  // Declaración como una instancia directa para evitar el uso de '!'
 
   constructor(
     private messageService: MessageService,
     private userService: UserService,
     private authService: AuthService
-  ) {}
+  ) {
+    // Se inicializa el FormGroup en el constructor para seguir las mejores prácticas
+    this.form = new FormGroup({
+      idUser: new FormControl('', Validators.required),
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', Validators.required),
+    });
+  }
 
   ngOnInit() {
     AOS.init();
-    const loggedInUser = this.authService.getLoggedInUser() || { name: '', email: '', phone: '' }; // Usa valores predeterminados si no hay datos
-    this.initForm(loggedInUser);
+    this.loadUserData();
   }
 
-  initForm(user: User | { name: string; email: string; phone: string }) {
-    this.form = new FormGroup({
-      name: new FormControl(user.name, Validators.required),
-      email: new FormControl(user.email, [Validators.email, Validators.required]),
-      phone: new FormControl(user.phone, Validators.required),
-    });
+  private loadUserData() {
+    const loggedInUser = this.authService.getLoggedInUser() || { idUser: '', name: '', email: '', phone: '' };
+    this.form.patchValue(loggedInUser);
   }
 
   async onSubmit() {
-    if (!this.form.valid) {
-      this.showError("Revisa los datos ingresados");
-      return;
-    }
-
-    const updatedUser = {
-      ...this.authService.getLoggedInUser(), // Obtén el usuario original por si se necesitan otros campos no modificados
-      ...this.form.value // Sobrescribe con los valores actualizados del formulario
-    };
-
-    // Actualiza el usuario en el backend y el local storage
-    const success = await this.userService.updateUser(updatedUser);
-    if (success) {
-      localStorage.setItem('user', JSON.stringify(updatedUser)); // actualiza el local storage
-      this.messageService.add({severity: 'success', summary: 'Éxito', detail: 'Usuario actualizado correctamente'});
+    if (this.form.valid) {
+      const updatedUser = this.form.value as User;  // Cast for better type assertion
+      try {
+        const success = await this.userService.updateUser(updatedUser);
+        if (success) {
+          localStorage.setItem('user', JSON.stringify(success));  // Update local storage with returned user data
+          this.messageService.add({severity: 'success', summary: 'Success', detail: 'User updated successfully'});
+        } else {
+          throw new Error('Failed to update user');
+        }
+      } catch (error) {
+        this.showError('Error updating user');
+      }
     } else {
-      this.showError("Error al actualizar el usuario");
+      this.showError('Please check the entered data');
     }
   }
 
-  showError(msg: string) {
-    this.messageService.add({
-      severity: 'error', summary: '¡Ups!', detail: msg
-    });
+  private showError(msg: string) {
+    this.messageService.add({severity: 'error', summary: 'Error', detail: msg});
   }
 }
