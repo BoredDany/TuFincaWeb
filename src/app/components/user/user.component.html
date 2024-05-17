@@ -1,1 +1,20 @@
-<p>user works!</p>
+<p-toast></p-toast>
+<div class="formContainer" data-aos="fade-right" data-aos-duration="500">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="userForm">
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput maxlength="50" placeholder="Nombre del usuario" formControlName="name" type="text">
+      <mat-hint align="end">{{ form.get('name')?.value?.length }} / 50</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input matInput maxlength="256" placeholder="Correo electrónico" formControlName="email" type="email">
+      <mat-hint align="end">{{ form.get('email')?.value?.length }} / 256</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Teléfono</mat-label>
+      <input matInput maxlength="15" placeholder="Número de teléfono" formControlName="phone" type="tel">
+      <mat-hint align="end">{{ form.get('phone')?.value?.length }} / 15</mat-hint>
+    </mat-form-field>
