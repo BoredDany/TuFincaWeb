@@ -4,6 +4,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Status } from '../../models/status';
 import { MessageService } from 'primeng/api';
 import { PropertyServiceService } from '../../services/properties/property-service.service';
+import { Router } from '@angular/router';
+import { Map, View } from 'ol';
+import TitleLayer from 'ol/layer/Tile'
+import { OSM } from 'ol/source';
 
 @Component({
   selector: 'app-add-property',
@@ -13,7 +17,35 @@ import { PropertyServiceService } from '../../services/properties/property-servi
 })
 export class AddPropertyComponent {
   property: Property;
-  user = 2;
+  user = JSON.parse(localStorage.getItem("user")!!);
+
+  active: number = 0;
+
+    name: string = "";
+
+    email: string = "";
+
+    password: string | undefined = undefined;
+
+    option1: boolean | undefined = false;
+
+    option2: boolean | undefined = false;
+
+    option3: boolean | undefined = false;
+
+    option4: boolean | undefined = false;
+
+    option5: boolean | undefined = false;
+
+    option6: boolean | undefined = false;
+
+    option7: boolean | undefined = false;
+
+    option8: boolean | undefined = false;
+
+    option9: boolean | undefined = false;
+
+    option10: boolean | undefined = false;
 
   propertyForm = new FormGroup({
     nameProperty: new FormControl(''),
@@ -33,7 +65,8 @@ export class AddPropertyComponent {
 
   constructor(
     private messageService: MessageService,
-    private propertyService: PropertyServiceService
+    private propertyService: PropertyServiceService,
+    private router: Router
   ) {
     this.property = {} as Property;
   }
@@ -100,7 +133,7 @@ export class AddPropertyComponent {
         kitchensNumber,
         floorsNumber,
         Status.ACTIVE,
-        this.user,
+        this.user.idUser,
         [],
         [],
         []
@@ -111,6 +144,7 @@ export class AddPropertyComponent {
         .postProperty(this.property)
         .then(() => {
           console.log('Property posted successfully');
+          this.router.navigate(['/home'])
         })
         .catch((error) => {
           console.error('Error posting property:', error);

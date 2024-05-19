@@ -16,19 +16,23 @@ export class AuthService {
       const data = await axios({
         method: 'post',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`${user.email}:${user.password}`)}`
         },
-        data: user,
         url: `${environment.backendURL}/auth/login`
       })
-
+  
       if (data.data.status == "OK") {
-
+        localStorage.setItem("jwt", data.data.data.results.token)
         const userResponse = await axios.get(
-        `${environment.backendURL}/users/email/${user.email}`
+        `${environment.backendURL}/users/email/${user.email}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${data.data.data.results.token}`
+          }
+        }
         );
-
-        localStorage.setItem("jwt", JSON.stringify(userResponse.data.data.results) || "sitiene")
+        localStorage.setItem("user", JSON.stringify(userResponse.data.data.results))
       } else throw data
     } catch (e: any) {
       console.log(e)

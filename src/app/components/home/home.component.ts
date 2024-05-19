@@ -30,7 +30,13 @@ export class HomeComponent implements OnInit {
     this.propertyService.getProperties().then((properties) => {
       this.properties = properties;
     }).catch((error) => {
-      console.error(error);
+      console.error(error)
+      if (error.response.status == 403) {
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("user");
+        this.router.navigate(['/login']);
+      }
+
     });
   }
 
