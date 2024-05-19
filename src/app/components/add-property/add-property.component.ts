@@ -49,10 +49,10 @@ export class AddPropertyComponent {
 
   propertyForm = new FormGroup({
     nameProperty: new FormControl(''),
-    country: new FormControl(''),
+    country: new FormControl({ value: '', disabled: true }),
     city: new FormControl(''),
-    latitude: new FormControl(''),
-    longitude: new FormControl(''),
+    latitude: new FormControl({ value: '', disabled: true }),
+    longitude: new FormControl({ value: '', disabled: true }),
     price: new FormControl(''),
     area: new FormControl(''),
     description: new FormControl(''),
@@ -149,7 +149,7 @@ export class AddPropertyComponent {
         .catch((error) => {
           console.error('Error posting property:', error);
         });
-        
+
     } catch (error) {
       if (error instanceof Error) {
         this.showError('Entrada inválida: ' + error.message);
@@ -157,6 +157,7 @@ export class AddPropertyComponent {
         this.showError('Entrada inválida');
       }
     }
+
   }
 
   showError(msg: string) {

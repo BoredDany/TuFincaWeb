@@ -1,9 +1,22 @@
 <p-toast></p-toast>
+<!-- Boton para pasar
+<div class="flex pt-4 justify-content-end">
+  <p-button (onClick)="nextCallback.emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" />
+</div> -->
+
+<!-- Boton para atras y pasar
+<div class="flex pt-4 justify-content-between">
+                  <p-button (onClick)="prevCallback.emit()" label="Back" severity="secondary" icon="pi pi-arrow-left" />
+                  <p-button (onClick)="nextCallback.emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" />
+              </div>
+              -->
+
+<form [formGroup]="propertyForm" (ngSubmit)="submitProperty()">
 <div class="card flex justify-content-center">
-  <p-stepper [(activeStep)]="active">
+  <p-stepper [(activeStep)]="active" class="form-container">
       <p-stepperPanel>
           <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
-              <button class="bg-transparent border-none inline-flex flex-column gap-2" (onClick)="onClick.emit()">
+              <button class="bg-transparent border-none inline-flex flex-column gap-2" disabled>
                   <span
                       class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
                       [ngClass]="{
@@ -15,9 +28,68 @@
                   </span>
               </button>
           </ng-template>
+
           <ng-template pTemplate="content" let-nextCallback="nextCallback">
+
+            <div class="inputsContainer">
+              <p-iconField iconPosition="left">
+                <p-inputIcon styleClass="pi pi-info" />
+                <input
+                  id="nameProperty"
+                  type="text"
+                  pInputText
+                  placeholder="Nombre"
+                  formControlName="nameProperty"
+                />
+              </p-iconField>
+
+              <p-iconField iconPosition="left">
+                <p-inputIcon styleClass="pi pi-map-marker" />
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Ciudad"
+                  formControlName="city"
+                />
+              </p-iconField>
+
+              <p-iconField iconPosition="left">
+                <p-inputIcon styleClass="pi pi-map-marker" />
+                <input
+                  type="text"
+                  pInputText
+                  placeholder="Pais"
+                  formControlName="country"
+                />
+              </p-iconField>
+              <p-iconField iconPosition="left">
+                <p-inputIcon styleClass="pi pi-map-marker" />
+                <input
+                  type="number"
+                  pInputText
+                  placeholder="Latitud"
+                  formControlName="latitude"
+                />
+              </p-iconField>
+              <p-iconField iconPosition="left">
+                <p-inputIcon styleClass="pi pi-map-marker" />
+                <input
+                  type="number"
+                  pInputText
+                  [disabled]="true"
+                  placeholder="Longitud"
+                  formControlName="longitude"
+                />
+              </p-iconField>
+            </div>
+
             <div class="mapContainer">
-              <app-map></app-map>
+              <app-map
+                [latitude]="propertyForm.controls.latitude"
+                [longitude]="propertyForm.controls.longitude"
+                [city]="propertyForm.controls.city"
+                [country]="propertyForm.controls.country"
+              />
             </div>
               <div class="flex pt-4 justify-content-end">
                   <p-button (onClick)="nextCallback.emit()" label="Next" icon="pi pi-arrow-right" iconPos="right" />
@@ -26,7 +98,7 @@
       </p-stepperPanel>
       <p-stepperPanel>
           <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
-              <button class="bg-transparent border-none inline-flex flex-column gap-2" (onClick)="onClick.emit()">
+              <button class="bg-transparent border-none inline-flex flex-column gap-2" disabled>
                   <span
                       class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
                       [ngClass]="{
@@ -62,7 +134,7 @@
       </p-stepperPanel>
       <p-stepperPanel>
           <ng-template pTemplate="header" let-onClick="onClick" let-index="index">
-              <button class="bg-transparent border-none inline-flex flex-column gap-2" (onClick)="onClick.emit()">
+              <button class="bg-transparent border-none inline-flex flex-column gap-2" disabled>
                   <span
                       class="border-round border-2 w-3rem h-3rem inline-flex align-items-center justify-content-center"
                       [ngClass]="{
@@ -88,6 +160,7 @@
       </p-stepperPanel>
   </p-stepper>
 </div>
+</form>
 
 <div class="form-container">
   <form [formGroup]="propertyForm" (ngSubmit)="submitProperty()">

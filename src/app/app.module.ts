@@ -37,6 +37,7 @@ import { CommonModule } from "@angular/common";
 import {ToggleButtonModule} from 'primeng/togglebutton'
 import { PasswordModule } from 'primeng/password';
 import { MapComponent } from "./components/map/map.component";
+import {FloatLabelModule} from "primeng/floatlabel";
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { MapComponent } from "./components/map/map.component";
     InputIconModule,
     CommonModule,
     ToggleButtonModule,
-    PasswordModule
+    PasswordModule,
+    FloatLabelModule
   ],
   bootstrap: [AppComponent],
   providers: [
