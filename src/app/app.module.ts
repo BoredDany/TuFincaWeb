@@ -38,6 +38,11 @@ import {ToggleButtonModule} from 'primeng/togglebutton'
 import { PasswordModule } from 'primeng/password';
 import { MapComponent } from "./components/map/map.component";
 import {FloatLabelModule} from "primeng/floatlabel";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {AnimateOnScrollModule} from "primeng/animateonscroll";
+import {FileUploadModule} from "primeng/fileupload";
+import {HttpClientModule} from "@angular/common/http";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -83,7 +88,12 @@ import {FloatLabelModule} from "primeng/floatlabel";
     CommonModule,
     ToggleButtonModule,
     PasswordModule,
-    FloatLabelModule
+    FloatLabelModule,
+    InputTextareaModule,
+    AnimateOnScrollModule,
+    FileUploadModule,
+    HttpClientModule,
+    ConfirmDialogModule
   ],
   bootstrap: [AppComponent],
   providers: [

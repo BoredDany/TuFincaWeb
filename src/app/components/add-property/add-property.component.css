@@ -9,8 +9,8 @@ body {
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
+  min-height: 70%;
 }
 
 form label {
@@ -29,11 +29,8 @@ form label textarea {
 form button {
   padding: 10px;
   margin-top: 20px;
-  background-color: #007bff;
-  color: #fff;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 form button:hover {
@@ -45,7 +42,7 @@ form button:hover {
 }
 .mapContainer {
   width: 100%;
-  height: 600px;
+  height: 25rem;
 }
 
 .inputsContainer {
@@ -56,3 +53,14 @@ form button:hover {
   justify-content: center;
   align-items: center;
 }
+
+.descriptionContainer, .areaContainer {
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  gap: 20px;
+}
+
+

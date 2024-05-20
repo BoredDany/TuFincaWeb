@@ -24,6 +24,7 @@
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.3",
     "@arcgis/core": "^4.29.10",
+    "@aws-sdk/client-s3": "^3.577.0",
     "@esri/arcgis-rest-geocoding": "^4.0.2",
     "@esri/arcgis-rest-request": "^4.2.1",
     "aos": "^2.3.4",
