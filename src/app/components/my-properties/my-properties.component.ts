@@ -43,7 +43,7 @@ export class MyPropertiesComponent {
 
   loadRents() {
     this.rentService
-      .getRents()
+      .getRentsWhereIsOwner()
       .then((rents) => {
         this.rents = rents.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })

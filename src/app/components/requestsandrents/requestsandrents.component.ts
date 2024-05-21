@@ -43,7 +43,7 @@ export class RequestsandrentsComponent {
 
   loadRents() {
     this.rentService
-      .getRents()
+      .getRentsWhereIsRenter()
       .then((rents) => {
         this.rents = rents.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
