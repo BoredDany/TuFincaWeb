@@ -32,6 +32,20 @@ import { CalendarModule } from 'primeng/calendar';
 import { TabViewModule } from 'primeng/tabview';
 import { AvatarModule } from 'primeng/avatar';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { StepperModule } from 'primeng/stepper';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import {CommonModule, NgOptimizedImage} from "@angular/common";
+import {ToggleButtonModule} from 'primeng/togglebutton'
+import { PasswordModule } from 'primeng/password';
+import { MapComponent } from "./components/map/map.component";
+import {FloatLabelModule} from "primeng/floatlabel";
+import {InputTextareaModule} from "primeng/inputtextarea";
+import {AnimateOnScrollModule} from "primeng/animateonscroll";
+import {FileUploadModule} from "primeng/fileupload";
+import {HttpClientModule} from "@angular/common/http";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {GalleriaModule} from "primeng/galleria";
 
 
 @NgModule({
@@ -50,7 +64,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     UserComponent,
     EditRequestComponent,
     PayComponent,
-    AddPropertyComponent
+    AddPropertyComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -71,8 +86,22 @@ import { InputNumberModule } from 'primeng/inputnumber';
     ImageModule,
     CalendarModule,
     InputNumberModule,
-    TabViewModule, 
-    AvatarModule
+    TabViewModule,
+    AvatarModule,
+    StepperModule,
+    IconFieldModule,
+    InputIconModule,
+    CommonModule,
+    ToggleButtonModule,
+    PasswordModule,
+    FloatLabelModule,
+    InputTextareaModule,
+    AnimateOnScrollModule,
+    FileUploadModule,
+    HttpClientModule,
+    ConfirmDialogModule,
+    GalleriaModule,
+    NgOptimizedImage
   ],
   bootstrap: [AppComponent],
   providers: [
