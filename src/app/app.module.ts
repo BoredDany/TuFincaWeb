@@ -33,7 +33,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { StepperModule } from 'primeng/stepper';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { CommonModule } from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {ToggleButtonModule} from 'primeng/togglebutton'
 import { PasswordModule } from 'primeng/password';
 import { MapComponent } from "./components/map/map.component";
@@ -43,6 +43,7 @@ import {AnimateOnScrollModule} from "primeng/animateonscroll";
 import {FileUploadModule} from "primeng/fileupload";
 import {HttpClientModule} from "@angular/common/http";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {GalleriaModule} from "primeng/galleria";
 
 @NgModule({
   declarations: [
@@ -93,7 +94,9 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     AnimateOnScrollModule,
     FileUploadModule,
     HttpClientModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    GalleriaModule,
+    NgOptimizedImage
   ],
   bootstrap: [AppComponent],
   providers: [

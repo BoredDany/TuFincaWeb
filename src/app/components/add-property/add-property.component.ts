@@ -59,6 +59,7 @@ export class AddPropertyComponent {
     }
     const uploaded = await Promise.all(promisesArr);
     for (const upload of uploaded) {
+      console.log(upload)
       const urlImage = `${this.urlPrefix}${uid}/${upload}`;
       await this.photoService.create(
         new Photo(
@@ -155,11 +156,15 @@ export class AddPropertyComponent {
           this.propertyService
             .postProperty(this.property)
             .then(async prop => {
-              await this.buildPhotosIDs(
-                `${propertyFormValues.latitude}.${propertyFormValues.longitude}`,
-                prop.idProperty
-              );
-              this.router.navigate(['/home'])
+              try {
+                await this.buildPhotosIDs(
+                  `${propertyFormValues.latitude}.${propertyFormValues.longitude}`,
+                  prop.idProperty
+                );
+                this.router.navigate(['/home'])
+              } catch (e) {
+                console.log(e)
+              }
             })
             .catch((error) => {
               console.error('Error posting property:', error);

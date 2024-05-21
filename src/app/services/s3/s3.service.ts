@@ -44,15 +44,16 @@ export class S3Service {
   }
 
   public getObjectURL(Key: string) {
-    return ``;
+    return `https://tu-finca-web.s3.us-east-2.amazonaws.com/images/${Key}`;
   }
 
   public async getFileObject(Key: string) {
     try {
-      const data =  await this.client.send(new GetObjectCommand({
+      const data = await this.client.send(new GetObjectCommand({
         Key,
         Bucket: this.bucketName
       }));
+      return data;
     } catch (e) {
       console.error(e)
     }
