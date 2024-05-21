@@ -14,8 +14,16 @@ export class RentService {
   constructor() { }
 
   //GET
-  getRents(): Promise<Rent []>{
+  getRentsWhereIsOwner(): Promise<Rent []>{
     return axios.get<Rent []>(this.localUrl, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
+  }
+
+  getRentsWhereIsRenter(): Promise<Rent []>{
+    return axios.get<Rent []>(this.localUrl + "rented", {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem("jwt")}`
       }
