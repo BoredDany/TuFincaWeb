@@ -1,0 +1,32 @@
+.formContainer {
+    display:flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 70%;
+    align-items: center;
+  }
+  
+  .userForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .submitButton, .addPropertyButton {
+    min-width: 120px;
+  }
+  
