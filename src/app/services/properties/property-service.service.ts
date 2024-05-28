@@ -24,7 +24,7 @@ export class PropertyServiceService {
   }
 
   getUserProperties(): Promise<Property []>{
-    return axios.get<Property []>(this.localUrl, {
+    return axios.get<Property []>(`${this.localUrl}me`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem("jwt")}`
       }

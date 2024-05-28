@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -8,4 +8,12 @@ import {RouterLink} from "@angular/router";
 })
 export class MenuComponent {
 
+  constructor(
+    private router: Router
+  ) {}
+
+  logoutUser() {
+    localStorage.removeItem("jwt"); localStorage.removeItem("user");
+    this.router.navigate(["/login"]);
+  }
 }

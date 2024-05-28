@@ -44,7 +44,6 @@ throw new Error('Method not implemented.');
   ngOnInit() {
     AOS.init();
     this.loadProperties();
-
   }
 
   private loadUserData() {
@@ -79,6 +78,7 @@ throw new Error('Method not implemented.');
   async onSubmit() {
     if (this.form.valid) {
       const updatedUser = this.form.value as User;  // Cast for better type assertion
+      updatedUser.phone = this.form.controls['phone'].value
       try {
         const success = await this.userService.updateUser(updatedUser);
         if (success) {
