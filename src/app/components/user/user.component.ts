@@ -5,6 +5,11 @@ import { MessageService } from 'primeng/api';
 import { UserService } from '../../services/users/user.service';
 import { AuthService } from '../../services/auth/auth.service';
 import { User } from '../../models/User';
+import { PropertyServiceService } from '../../services/properties/property-service.service';
+import { PhotosService } from '../../services/photos/photos.service';
+import { Photo } from '../../models/Photo';
+import { Router } from '@angular/router';
+import { Property } from '../../models/Property';
 
 @Component({
   selector: 'app-user',
@@ -17,11 +22,15 @@ updateUser() {
 throw new Error('Method not implemented.');
 }
   form: FormGroup;  // Declaración como una instancia directa para evitar el uso de '!'
+  properties: any[] = [];
 
   constructor(
     private messageService: MessageService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private propertyService: PropertyServiceService,
+    private photoService: PhotosService,
+    private router: Router
   ) {
     // Se inicializa el FormGroup en el constructor para seguir las mejores prácticas
     this.form = new FormGroup({
@@ -34,12 +43,37 @@ throw new Error('Method not implemented.');
 
   ngOnInit() {
     AOS.init();
-    this.loadUserData();
+    this.loadProperties();
+
   }
 
   private loadUserData() {
     const loggedInUser = this.authService.getLoggedInUser() || { idUser: '', name: '', email: '', phone: '' };
     this.form.patchValue(loggedInUser);
+  }
+
+  loadProperties (){
+    this.propertyService.getUserProperties().then( (properties) => {
+      const propertiesWrapper = properties as any[];
+      propertiesWrapper.forEach(async property => {
+        if (property.photoIds.length == 0) {
+          property.imageURL = "/assets/images/home.jpg"
+        } else {
+          const photo = await this.photoService.getOne(property.photoIds[0])
+          property.imageURL = (photo as Photo).url;
+        }
+      })
+      this.properties = properties;
+      this.loadUserData();
+    }).catch((error) => {
+      console.error(error)
+      if (error.response.status == 403) {
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("user");
+        this.router.navigate(['/login']);
+      }
+
+    });
   }
 
   async onSubmit() {
@@ -64,4 +98,9 @@ throw new Error('Method not implemented.');
   private showError(msg: string) {
     this.messageService.add({severity: 'error', summary: 'Error', detail: msg});
   }
+
+  viewProperty(property: Property) {
+    this.router.navigate(['/property', property.idProperty]);
+  }
+  
 }

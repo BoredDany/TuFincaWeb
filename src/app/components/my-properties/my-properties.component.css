@@ -7,16 +7,14 @@
 
 /* Estilos para el contenedor del body y el main */
 body, html {
-  overflow: hidden;
+  overflow: auto; /* Permite el desplazamiento en toda la página */
   height: 100%;
 }
 
 main {
-  height: 100vh;
-  overflow-y: scroll;
   padding: 10px;
-  margin: 0;
-  flex-grow: 1;
+  margin: 0 auto;
+  width: 100%; /* Ajusta el tamaño máximo del contenedor principal */
 }
 
 /* Contenedor principal vertical */
@@ -24,6 +22,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 /* Secciones de rentas y solicitudes */
@@ -31,7 +30,6 @@ main {
 .request-section {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   width: 100%;
 }
 
@@ -39,10 +37,9 @@ main {
 .horizontal-scroll-container {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: auto; /* Permite desplazamiento horizontal */
   gap: 15px;
   padding: 10px;
-  height: 100%;
 }
 
 .horizontal-scroll-container::-webkit-scrollbar {
@@ -64,7 +61,7 @@ main {
 .rent-grid,
 .request-grid {
   display: flex;
-  flex-direction: row; /* Cambiar a disposición horizontal */
+  flex-direction: row; /* Disposición horizontal */
   gap: 15px; /* Espacio entre las tarjetas */
 }
 

@@ -1,28 +1,59 @@
 <p-toast></p-toast>
-<div class="formContainer" data-aos="fade-right" data-aos-duration="500">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="userForm">
-    <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput maxlength="50" placeholder="Nombre del usuario" formControlName="name" type="text">
-      <mat-hint align="end">{{ form.get('name')?.value?.length }} / 50</mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Correo</mat-label>
-      <input matInput maxlength="256" placeholder="Correo electrónico" formControlName="email" type="email">
-      <mat-hint align="end">{{ form.get('email')?.value?.length }} / 256</mat-hint>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Teléfono</mat-label>
-      <input matInput maxlength="15" placeholder="Número de teléfono" formControlName="phone" type="tel">
-      <mat-hint align="end">{{ form.get('phone')?.value?.length }} / 15</mat-hint>
-    </mat-form-field>
-
-    <button>
-        <p> Actualizar</p>
-    </button>
-
-    <button>
-        <a href="/addProperty">Add property</a>
-    </button>
+<div class="mainContainer">
+    <div class="leftContainer">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="userForm">
+          <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput maxlength="50" placeholder="Nombre del usuario" formControlName="name" type="text">
+              <mat-hint align="end">{{ form.get('name')?.value?.length }} / 50</mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field>
+              <mat-label>Correo</mat-label>
+              <input matInput maxlength="256" placeholder="Correo electrónico" formControlName="email" type="email">
+              <mat-hint align="end">{{ form.get('email')?.value?.length }} / 256</mat-hint>
+          </mat-form-field>
+  
+          <mat-form-field>
+              <mat-label>Teléfono</mat-label>
+              <input matInput maxlength="15" placeholder="Número de teléfono" formControlName="phone" type="tel">
+              <mat-hint align="end">{{ form.get('phone')?.value?.length }} / 15</mat-hint>
+          </mat-form-field>
+  
+          <div class="button-container">
+              <button type="submit">Actualizar</button>
+              <button type="button">
+                  <a href="/addProperty" style="color: white; text-decoration: none;">Add property</a>
+              </button>
+          </div>
+      </form>
+  </div>
+    
+    <div class="rightContainer">
+        <main>
+            <div *ngIf="properties.length > 0; else noProperties" class="property-grid">
+                <div *ngFor="let property of properties" class="property-mini-container">
+                    <div class="card flex justify-content-center property-card">
+                        <div class="property-content">
+                            <div class="image-container">
+                                <img alt="Card" src="{{property.imageURL}}" />
+                            </div>
+                            <div class="content-container">
+                                <h2 class="property-title">{{ property.name }}</h2>
+                                <div class="property-details">
+                                    <p>País: {{ property.country }}</p>
+                                    <p>Ciudad: {{ property.city }}</p>
+                                    <p>{{ property.description }}</p>
+                                </div>
+                                <p-button class="centered-btn" (click)="viewProperty(property)" label="See more" icon="pi pi-check"></p-button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noProperties>
+                <p>Finding properties...</p>
+            </ng-template>
+        </main>
+    </div>
+</div>
