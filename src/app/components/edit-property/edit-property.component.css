@@ -1,13 +1,14 @@
 .main-content {
   display: flex; /* Hacer que el contenido principal sea un contenedor flex */
-  flex-direction: row; /* Colocar los elementos en fila */
-  gap: 2rem; /* Añadir espacio entre las secciones */
+  flex-direction: row; /* Colocar los contenedores en fila */
+  justify-content: space-between; /* Dejar espacio entre los contenedores */
   padding: 2rem; /* Añadir padding alrededor del contenido */
+  align-items: flex-start; /* Alinear los contenedores al inicio vertical */
 }
 
 .property-image,
 .property-data {
-  flex: 1; /* Hacer que ambas secciones ocupen el mismo espacio */
+  width: 48%; /* Hacer que ambas secciones ocupen un 48% del ancho */
   display: flex; /* Hacer que cada sección sea un contenedor flex */
   flex-direction: column; /* Apilar elementos dentro de cada sección verticalmente */
   padding: 1rem; /* Añadir padding para separación visual */
@@ -15,11 +16,21 @@
   border-radius: 8px; /* Bordes redondeados */
   background-color: #f9f9f9; /* Fondo color gris claro */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para dar profundidad */
+  margin-bottom: 2rem; /* Espacio inferior entre secciones */
 }
 
 .property-image {
   justify-content: center; /* Centrar contenido verticalmente */
   align-items: center; /* Centrar contenido horizontalmente */
+  max-width: 100%; /* Máximo ancho del contenedor de la imagen */
+  overflow: hidden; /* Esconder partes desbordantes */
+}
+
+.property-image img {
+  max-width: 100%; /* Máximo ancho de la imagen */
+  height: auto; /* Ajustar altura automáticamente */
+  display: block; /* Eliminar espacio blanco debajo de la imagen */
+  object-fit: contain; /* Ajustar la imagen para que no se corte */
 }
 
 .property-data h2 {
@@ -27,11 +38,23 @@
   color: #333; /* Color del texto */
   font-size: 1.5rem; /* Tamaño de fuente */
   font-weight: 600; /* Grosor de la fuente */
+  text-align: center; /* Centrar el texto */
+}
+
+.form-row {
+  display: flex; /* Hacer que las filas sean contenedores flex */
+  justify-content: center; /* Centrar los elementos horizontalmente */
+  gap: 1rem; /* Espacio entre elementos */
+  width: 100%; /* Hacer que las filas ocupen todo el ancho */
+  margin-bottom: 1rem; /* Añadir espacio inferior entre las filas */
 }
 
 .mat-form-field {
-  margin-bottom: 1rem; /* Añadir espacio entre los campos del formulario */
-  width: 100%; /* Hacer que los campos ocupen todo el ancho */
+  width: 48%; /* Hacer que los campos ocupen un 48% del ancho para dejar espacio entre ellos */
+  background-color: #ffffff; /* Fondo blanco */
+  padding: 1rem; /* Padding interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añadir sombra para dar profundidad */
 }
 
 .mat-form-field input,
@@ -39,16 +62,19 @@
   padding: 0.5rem; /* Añadir padding dentro de los campos */
   border-radius: 4px; /* Bordes redondeados */
   border: 1px solid #ccc; /* Borde gris claro */
+  width: 100%; /* Hacer que los campos ocupen todo el ancho */
+  box-sizing: border-box; /* Asegurar que el padding y el borde se incluyan en el tamaño total */
 }
 
 .mat-form-field input:focus,
 .mat-form-field textarea:focus {
   border-color: #007bff; /* Cambiar color del borde al enfocarse */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Añadir sombra azul */
+  outline: none; /* Quitar el borde de enfoque predeterminado */
 }
 
 .button-container {
-  text-align: right; /* Alinear botón a la derecha */
+  text-align: center; /* Alinear botón al centro */
   margin-top: 1rem; /* Añadir espacio arriba del contenedor de botones */
 }
 
@@ -70,5 +96,18 @@ button[type="submit"]:hover {
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column; /* Apilar secciones verticalmente en pantallas pequeñas */
+  }
+
+  .property-image,
+  .property-data {
+    max-width: 100%; /* Asegurarse de que las secciones ocupen todo el ancho en pantallas pequeñas */
+  }
+
+  .form-row {
+    flex-direction: column; /* Apilar elementos verticalmente en pantallas pequeñas */
+  }
+
+  .mat-form-field {
+    width: 100%; /* Hacer que los campos ocupen todo el ancho en pantallas pequeñas */
   }
 }

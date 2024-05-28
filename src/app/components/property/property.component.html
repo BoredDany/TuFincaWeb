@@ -28,17 +28,19 @@
     <h2>{{ property.name }}</h2>
     <p>{{ property.country }}, {{ property.city }}</p>
     <p>
-      Latitude: {{ property.latitude }}, Longitude: {{ property.longitude }}
+      <span class="titleBold">latitude </span> {{ property.latitude }}, <span class="titleBold">Longitude:</span> {{ property.longitude }}
     </p>
-    <p>Price: {{ property.price }}</p>
-    <p>Area: {{ property.area }}</p>
-    <p>Description: {{ property.description }}</p>
-    <p>Rooms: {{ property.rooms }}</p>
-    <p>Bathrooms: {{ property.bathrooms }}</p>
-    <p>Parking: {{ property.parking }}</p>
-    <p>Kitchens: {{ property.kitchens }}</p>
-    <p>Floors: {{ property.floors }}</p>
-    <p>Owner: {{ property.ownerId }}</p>
+  
+    <p><span class="titleBold">Price:</span> {{ property.price }}</p>
+    <p><span class="titleBold">Area:</span> {{ property.area }}</p>
+    <p><span class="titleBold">Description:</span> {{ property.description }}</p>
+    <p><span class="titleBold">Rooms:</span> {{ property.rooms }}</p>
+    <p><span class="titleBold">Bathrooms:</span> {{ property.bathrooms }}</p>
+    <p><span class="titleBold">Parking:</span> {{ property.parking }}</p>
+    <p><span class="titleBold">Kitchens:</span> {{ property.kitchens }}</p>
+    <p><span class="titleBold">Floors:</span> {{ property.floors }}</p>
+    <p><span class="titleBold">Owner:</span> {{ property.ownerId }}</p>
+
 
     <div class="buttons">
       <p-button (click)="requestProperty()" [loading]="loading" label="Request rent" icon="pi pi-check"></p-button>

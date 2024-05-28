@@ -26,54 +26,64 @@
     <div class="property-data">
       <h2>Edit Property Details</h2>
       <form [formGroup]="propertyForm" (ngSubmit)="submitPropertyDetails()">
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput maxlength="50" placeholder="Name of the property" formControlName="name" type="text">
-          <mat-hint align="end">{{ propertyForm.get('name')?.value?.length }} / 50</mat-hint>
-        </mat-form-field>
+        <div class="form-row">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput maxlength="50" placeholder="Name of the property" formControlName="name" type="text">
+            <mat-hint align="end">{{ propertyForm.get('name')?.value?.length }} / 50</mat-hint>
+          </mat-form-field>
   
-        <mat-form-field>
-          <mat-label>Price</mat-label>
-          <input matInput type="number" placeholder="Price of the property" formControlName="price" required>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input matInput type="number" placeholder="Price of the property" formControlName="price" required>
+          </mat-form-field>
+        </div>
   
-        <mat-form-field>
-          <mat-label>Area (square meters)</mat-label>
-          <input matInput type="number" placeholder="Area of the property" formControlName="area" required>
-        </mat-form-field>
+        <div class="form-row">
+          <mat-form-field>
+            <mat-label>Area (square meters)</mat-label>
+            <input matInput type="number" placeholder="Area of the property" formControlName="area" required>
+          </mat-form-field>
   
-        <mat-form-field>
-          <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Describe the property" formControlName="description" required></textarea>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Describe the property" formControlName="description" required></textarea>
+          </mat-form-field>
+        </div>
   
-        <mat-form-field>
-          <mat-label>Rooms</mat-label>
-          <input matInput type="number" placeholder="Number of rooms" formControlName="rooms" required>
-        </mat-form-field>
+        <div class="form-row">
+          <mat-form-field>
+            <mat-label>Rooms</mat-label>
+            <input matInput type="number" placeholder="Number of rooms" formControlName="rooms" required>
+          </mat-form-field>
   
-        <mat-form-field>
-          <mat-label>Bathrooms</mat-label>
-          <input matInput type="number" placeholder="Number of bathrooms" formControlName="bathrooms" required>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Bathrooms</mat-label>
+            <input matInput type="number" placeholder="Number of bathrooms" formControlName="bathrooms" required>
+          </mat-form-field>
+        </div>
   
-        <mat-form-field>
-          <mat-label>Parking spaces</mat-label>
-          <input matInput type="number" placeholder="Number of parking spaces" formControlName="parking" required>
-        </mat-form-field>
+        <div class="form-row">
+          <mat-form-field>
+            <mat-label>Parking spaces</mat-label>
+            <input matInput type="number" placeholder="Number of parking spaces" formControlName="parking" required>
+          </mat-form-field>
   
-        <mat-form-field>
-          <mat-label>Kitchens</mat-label>
-          <input matInput type="number" placeholder="Number of kitchens" formControlName="kitchens" required>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Kitchens</mat-label>
+            <input matInput type="number" placeholder="Number of kitchens" formControlName="kitchens" required>
+          </mat-form-field>
+        </div>
   
-        <mat-form-field>
-          <mat-label>Floors</mat-label>
-          <input matInput type="number" placeholder="Number of floors" formControlName="floors" required>
-        </mat-form-field>
+        <div class="form-row">
+          <mat-form-field>
+            <mat-label>Floors</mat-label>
+            <input matInput type="number" placeholder="Number of floors" formControlName="floors" required>
+          </mat-form-field>
+        </div>
   
         <div class="button-container">
-          <button type="submit" mat-raised-button color="primary">Save Changes</button>
+          <button type="submit" mat-raised-button color="primary">Save</button>
         </div>
       </form>
     </div>
