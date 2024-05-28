@@ -158,10 +158,6 @@ button {
   transition: box-shadow 300ms ease-in-out; /* Transición para la sombra */
 }
 
-.leftContainer:hover, .rightContainer:hover, .formContainer:hover, .property-mini-container:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra intensificada al pasar el mouse */
-}
-
 /* Oculta la barra de desplazamiento en Chrome, Safari y Opera */
 .leftContainer::-webkit-scrollbar, .rightContainer::-webkit-scrollbar {
   display: none;
