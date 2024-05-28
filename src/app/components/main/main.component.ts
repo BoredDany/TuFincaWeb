@@ -38,7 +38,7 @@ export class MainComponent {
   }
 
   private showWait(msg: string) {
-    this.messageService.add({severity: 'warn', summary: 'Calificando...', detail: msg});
+    this.messageService.add({severity: 'warn', summary: 'Creando...', detail: msg});
   }
 
   async onSubmit() {

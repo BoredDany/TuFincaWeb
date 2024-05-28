@@ -151,7 +151,7 @@ export class AddPropertyComponent {
             [],
             []
           );
-
+          this.showWait("Estamos creando tu propiedad a la medida.")
           //save property
           this.propertyService
             .postProperty(this.property)
@@ -191,6 +191,14 @@ export class AddPropertyComponent {
     this.messageService.add({
       severity: 'error',
       summary: '¡Ups!',
+      detail: msg,
+    });
+  }
+
+  showWait(msg: string) {
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Creando tu propiedad...',
       detail: msg,
     });
   }

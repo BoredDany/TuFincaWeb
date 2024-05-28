@@ -43,10 +43,12 @@ throw new Error('Method not implemented.');
 
   ngOnInit() {
     AOS.init();
+    this.showWait("Estamos obteniendo tus propiedades", "propiedades")
     this.loadProperties();
   }
 
   private loadUserData() {
+    this.showWait("Estamos obteniendo tus datos", "usuario")
     const loggedInUser = this.authService.getLoggedInUser() || { idUser: '', name: '', email: '', phone: '' };
     this.form.patchValue(loggedInUser);
   }
@@ -97,6 +99,10 @@ throw new Error('Method not implemented.');
 
   private showError(msg: string) {
     this.messageService.add({severity: 'error', summary: 'Error', detail: msg});
+  }
+
+  private showWait(msg: string, w: string) {
+    this.messageService.add({ severity: 'warn', summary: `Obteniendo ${w}...`, detail: msg })
   }
 
   viewProperty(property: Property) {

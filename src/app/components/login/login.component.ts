@@ -37,7 +37,7 @@ export class LoginComponent {
   }
 
   private showWait(msg: string) {
-    this.messageService.add({severity: 'warn', summary: 'Calificando...', detail: msg});
+    this.messageService.add({severity: 'warn', summary: 'Ingresando...', detail: msg});
   }
 
   async onSubmit() {

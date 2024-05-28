@@ -14,15 +14,29 @@ import { reverseGeocode } from '@esri/arcgis-rest-geocoding'
 import { ApiKeyManager } from '@esri/arcgis-rest-request'
 import { environment } from '../../environment/environment';
 import {FormControl} from "@angular/forms";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrl: './map.component.css'
+  styleUrl: './map.component.css',
+  providers: [MessageService]
 })
-export class MapComponent implements OnInit {
+export class MapComponent {
   map!: Map;
   marker: VectorLayer<Feature<Geometry>> | undefined;
+
+  constructor(
+    private messageService : MessageService
+  ) {
+    navigator.geolocation.getCurrentPosition(
+      e => this.initMap(fromLonLat([e.coords.longitude, e.coords.latitude]), 12),
+      error => {
+        this.initMap([0, 0], 2);
+        console.log(error);
+      }
+    );
+  }
 
   @Input()
   latitude: FormControl<string | null> | undefined;
@@ -54,6 +68,9 @@ export class MapComponent implements OnInit {
     const authGeocoder = ApiKeyManager.fromKey(environment.GEOCODER_API_KEY);
 
     this.map.on('click', async e => {
+
+      this.showWait()
+
       const latLong = toLonLat(e.coordinate);
       const data = await reverseGeocode(
         latLong as [number, number],
@@ -85,14 +102,11 @@ export class MapComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-
-    navigator.geolocation.getCurrentPosition(
-      e => this.initMap(fromLonLat([e.coords.longitude, e.coords.latitude]), 12),
-      error => {
-        this.initMap([0, 0], 2);
-        console.log(error);
-      }
-    );
- }
+  private showWait() {
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Obteniendo ubicación..',
+      detail: 'Estamos obteniendo los detalles de tu marcador.'
+    })
+  }
 }
