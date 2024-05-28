@@ -37,9 +37,18 @@ export class MainComponent {
     })
   }
 
+  private showWait(msg: string) {
+    this.messageService.add({severity: 'warn', summary: 'Calificando...', detail: msg});
+  }
+
   async onSubmit() {
     console.log(this.form.value);
-    if (!this.form.valid) this.showError("Verifique los valores que ingresó")
+    if (!this.form.valid) {
+      this.showError("Verifique los valores que ingresó")
+      return;
+    }
+
+    this.showWait("Estamos creando tu cuenta. Serás redirigido al login.")
     const newPhone = parseInt(this.form.value.phone!!)
 
     const registerForm : RegisterForm = {

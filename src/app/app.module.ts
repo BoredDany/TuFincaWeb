@@ -16,7 +16,7 @@ import {UserComponent} from "./components/user/user.component";
 import { PayComponent } from "./components/pay/pay.component";
 import { AddPropertyComponent } from "./components/add-property/add-property.component";
 import {MatFormField, MatHint, MatLabel} from "@angular/material/form-field";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {EditRequestComponent} from "./components/edit-request/edit-request.component";
 import {MatButton} from "@angular/material/button";
 import {MatInput} from "@angular/material/input";
@@ -48,6 +48,7 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {GalleriaModule} from "primeng/galleria";
 import { EditPropertyComponent } from "./components/edit-property/edit-property.component";
 
+import { RatingModule } from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,9 @@ import { EditPropertyComponent } from "./components/edit-property/edit-property.
     HttpClientModule,
     ConfirmDialogModule,
     GalleriaModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RatingModule,
+    FormsModule
   ],
   bootstrap: [AppComponent],
   providers: [
