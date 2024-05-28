@@ -1,3 +1,4 @@
+<p-toast></p-toast>
 <main>
   <div class="horizontal-container">
     <div class="rent-section">
@@ -21,6 +22,10 @@
           <button [disabled]="setButtonsStatus(rent)" (click)="payRent(rent)">
             Pagar renta
           </button>
+          <div class="ratingContainer">
+            <p style="padding-top: 20px;">Califica esta renta</p>
+            <p-rating [(ngModel)]="ratingValues[i]" (onRate)="onChangeRating(rent, i)" [cancel]="false" />
+          </div>
         </div>
       </div>
       <ng-template #noRents>

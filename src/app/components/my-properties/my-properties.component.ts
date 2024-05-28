@@ -8,19 +8,23 @@ import { Approval } from '../../models/Approval';
 import { Rent } from '../../models/Rent';
 import { Status } from '../../models/status';
 import { RentService } from '../../services/rents/rent.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-my-properties',
   templateUrl: './my-properties.component.html',
   styleUrl: './my-properties.component.css',
+  providers: [MessageService]
 })
 export class MyPropertiesComponent {
   requests: RentRequest[] = [];
   rents: Rent[] = [];
   approval = Approval;
   renterId = 2; // obtener del usuario loggeado
+  ratingValues : number[] = [];
 
   constructor(
+    private messageService: MessageService,
     private rentRequestService: RentRequestService,
     private rentService: RentService
   ) {}
@@ -46,6 +50,8 @@ export class MyPropertiesComponent {
       .getRentsWhereIsOwner()
       .then((rents) => {
         this.rents = rents.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
+        this.ratingValues = new Array(this.rents.length)
+        this.rents.forEach((rent, idx) => this.ratingValues[idx]=rent.ratingOwner)
       })
       .catch((error) => {
         console.error(error);
@@ -152,5 +158,30 @@ export class MyPropertiesComponent {
       .catch((error) => {
         console.error('Error canceling rent:', error);
       });
+  }
+
+  onChangeRating(rent: Rent, idx: number) {
+    this.showWait("Estamos calificando la renta")
+    rent.ratingOwner = this.ratingValues[idx]
+    this.rentService
+      .putRent(rent)
+      .then(() => {
+        this.showSuccess("Has calificado esta renta como dueño.")
+      })
+      .catch((error) => {
+        this.showError("No hemos podido calificar la renta.")
+      });
+  }
+
+  private showError(msg: string) {
+    this.messageService.add({severity: 'error', summary: 'Error', detail: msg});
+  }
+
+  private showSuccess(msg: string) {
+    this.messageService.add({severity: 'success', summary: 'Calificado', detail: msg});
+  }
+
+  private showWait(msg: string) {
+    this.messageService.add({severity: 'warn', summary: 'Calificando...', detail: msg});
   }
 }

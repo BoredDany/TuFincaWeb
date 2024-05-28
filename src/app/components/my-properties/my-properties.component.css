@@ -220,3 +220,10 @@ button.reject-button {
 button.accept-button {
   margin-right: 10px;
 }
+
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

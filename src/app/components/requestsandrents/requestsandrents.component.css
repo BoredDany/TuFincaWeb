@@ -125,3 +125,10 @@ button:disabled {
   width: 0px;
   background: transparent; /* También se puede usar display: none; */
 }
+
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -36,9 +36,14 @@ export class LoginComponent {
     })
   }
 
+  private showWait(msg: string) {
+    this.messageService.add({severity: 'warn', summary: 'Calificando...', detail: msg});
+  }
+
   async onSubmit() {
     if (!this.form.valid) this.showError("Revisa los datos ingresados")
     else {
+      this.showWait("Estamos validando tu usuario")
       const loginForm : LoginForm = {
         email: this.form.value.email!!,
         password: this.form.value.password!!
