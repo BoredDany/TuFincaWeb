@@ -5,11 +5,13 @@ import { PropertyServiceService } from '../../services/properties/property-servi
 import { PhotosService } from '../../services/photos/photos.service';
 import { Photo } from '../../models/Photo';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-edit-property',
   templateUrl: './edit-property.component.html',
-  styleUrl: './edit-property.component.css'
+  styleUrl: './edit-property.component.css',
+  providers: [MessageService]
 })
 export class EditPropertyComponent {
 
@@ -21,7 +23,8 @@ export class EditPropertyComponent {
     private route: ActivatedRoute,
     private propertyService: PropertyServiceService,
     private photoService: PhotosService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.property = {} as Property;
 
@@ -94,7 +97,10 @@ export class EditPropertyComponent {
   }
 
   submitPropertyDetails() {
-    if (this.propertyForm.valid) {
+    if (!this.propertyForm.valid) {
+        // Mostrar mensaje de error
+    } else {
+      // MOstrar mensaje de espera 
       this.loading = true;
       const updatedProperty = new Property(
         this.property.idProperty,
@@ -122,13 +128,31 @@ export class EditPropertyComponent {
         response => {
           console.log('Property updated successfully', response);
           this.router.navigate(['/user']);
-        },
+        }
+      ).catch(
         error => {
+          // Mostrar mensaje de error
           console.error('Error updating property', error);
           this.loading = false;
         }
       );
     }
+  }
+
+  showError(msg: string) {
+    this.messageService.add({
+      severity: 'error',
+      summary: '¡Error!',
+      detail: msg
+    })
+  }
+
+  showWait() {
+    this.messageService.add({
+      severity: 'warn',
+      summary: 'Actualizando tu propiedad...',
+      detail: 'Estamos actualizando tu propriedad.'
+    })
   }
   
 }
