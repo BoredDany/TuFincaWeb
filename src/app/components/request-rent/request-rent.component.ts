@@ -12,11 +12,13 @@ import { UserService } from '../../services/users/user.service';
 import { RentRequestService } from '../../services/rentrequests/rent-request.service';
 import { Status } from '../../models/status';
 import { Approval } from '../../models/Approval';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-request-rent',
   templateUrl: './request-rent.component.html',
   styleUrl: './request-rent.component.css',
+  providers: [MessageService]
 })
 export class RequestRentComponent {
   property: Property;
@@ -35,7 +37,8 @@ export class RequestRentComponent {
     private route: ActivatedRoute,
     private propertyService: PropertyServiceService,
     private userService: UserService,
-    private rentRequestService: RentRequestService
+    private rentRequestService: RentRequestService,
+    private messageService: MessageService
   ) {
     this.property = {} as Property;
     this.owner = {} as User;
@@ -133,6 +136,8 @@ export class RequestRentComponent {
       Status.ACTIVE
     );
 
+    this.showWait()
+
     this.rentRequestService
       .postRentRequest(this.rentRequest)
       .then(() => {
@@ -143,4 +148,9 @@ export class RequestRentComponent {
         console.error('Error posting rent request:', error);
       });
   }
+
+  showWait() {
+    this.messageService.add({ severity: 'warn', summary: 'Pidiendo renta.', detail: 'Estamos publicando tu renta.' })
+  }
+
 }

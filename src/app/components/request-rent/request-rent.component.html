@@ -1,9 +1,9 @@
-
+<p-toast></p-toast>
 <div class="form-container">
-  <form [formGroup]="rentRequestForm" (ngSubmit)="requestRent()">
+  <form [formGroup]="rentRequestForm" (ngSubmit)="requestRent()" class="card">
     <h1>Request Rent</h1>
     <div class="date-fields">
-      <p>Start Date</p>
+      <p class="titleBold"> Start Date</p>
       <!-- <input
         type="date"
         formControlName="dateStart"
@@ -13,32 +13,41 @@
     </div>
 
     <div class="date-fields">
-      <p>End Date</p>
-      <!-- <input
-        type="date"
-        formControlName="dateEnd"
-        [(ngModel)]="rentRequest.dateEnd"
-      /> -->
+      <p class="titleBold">End Date</p>
       <p-calendar formControlName="dateEnd" [(ngModel)]="rentRequest.dateEnd"></p-calendar>
     </div>
 
-    <!-- <p-inputNumber [(ngModel)]="rentRequest.numPeople" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical" decrementButtonClass="p-button-secondary"
-    incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus"
-     decrementButtonIcon="pi pi-minus" 
-     formControlName="numPeople"
-     ></p-inputNumber> -->
+    <div class="personsContainer">
+      <h1 style="text-align: center;">Cantidad de personas</h1>
+      <p-inputNumber 
+      [style]="{'width': '4rem'}" 
+      [(ngModel)]="rentRequest.numPeople" 
+      [showButtons]="true" 
+      [min]="1"
+      buttonLayout="vertical" 
+      spinnerMode="vertical" 
+      inputId="vertical" 
+      decrementButtonClass="incr"
+      incrementButtonClass="incr" 
+      incrementButtonIcon="pi pi-plus"
+      decrementButtonIcon="pi pi-minus" 
+      formControlName="numPeople"
+     ></p-inputNumber>
+    </div>
 
-    <input
+    <!-- <input
       type="number"
       formControlName="numPeople"
       placeholder="Number of People"
       [(ngModel)]="rentRequest.numPeople"
-    />
-    <p>Property owner: {{ owner.name }}</p>
-    <p>Property to rent: {{ property.name }}</p>
-    <p>Country: {{ property.country }}</p>
-    <p>City: {{ property.city }}</p>
-    <p>Total Price: {{ calculatePrice() }}</p>
+    /> -->
+    <div class="detailsContainer">
+      <p> <span class="titleBold">Property owner:</span> {{ owner.name }}</p>
+      <p> <span class="titleBold">Property to rent:</span> {{ property.name }}</p>
+      <p> <span class="titleBold">Country:</span> {{ property.country }}</p>
+      <p> <span class="titleBold">City:</span> {{ property.city }}</p>
+      <p> <span class="titleBold">Total Price:</span> {{ calculatePrice() }}</p>
+    </div>
 
     <button type="submit">Request rent</button>
   </form>

@@ -3,5 +3,15 @@
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
 @import "https://js.arcgis.com/4.29/@arcgis/core/assets/esri/themes/light/main.css";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Ubuntu&display=swap');
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0;}
+html * {
+    font-family: "Fira Sans", sans-serif;
+    font-style: normal !important;
+}
+.titleBold {
+    font-weight: bold;
+    font-size: 16px;
+}

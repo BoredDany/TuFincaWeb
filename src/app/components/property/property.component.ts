@@ -7,11 +7,13 @@ import { FooterComponent } from '../footer/footer.component';
 import { CommonModule } from '@angular/common';
 import {PhotosService} from "../../services/photos/photos.service";
 import {Photo} from "../../models/Photo";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-property',
   templateUrl: './property.component.html',
   styleUrl: './property.component.css',
+  providers: [MessageService]
 })
 export class PropertyComponent implements OnInit {
   property: Property;
@@ -20,7 +22,8 @@ export class PropertyComponent implements OnInit {
     private route: ActivatedRoute,
     private propertyService: PropertyServiceService,
     private photoService: PhotosService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.property = {} as Property;
   }
@@ -29,6 +32,10 @@ export class PropertyComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPropertyDetail();
+  }
+
+  showWait() {
+    this.messageService.add({ severity: 'warn', summary: 'Obteniendo detalles...', detail: 'Obteniendo los detalles de la propiedad' })
   }
 
   loadPropertyDetail() {

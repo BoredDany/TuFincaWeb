@@ -11,9 +11,16 @@
 
 /* Styles for the form */
 form {
+  padding: 30px;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #e6e6e6, #ffffff);
+  box-shadow:  7px -7px 12px #d6d6d6,
+               -7px 7px 12px #ffffff;
   display: flex;
   flex-direction: column;
-  width: 40%; /* Adjust the width of the form as needed */
+  align-items: center;
+  justify-content: center;
+  width: 30%; /* Adjust the width of the form as needed */
   gap: 10px; /* Add space between elements */
 }
 
@@ -42,17 +49,39 @@ input[type="number"] {
 
 /* Styles for the submit button */
 button[type="submit"] {
-  width: 120%; /* Make the button wider */
+  transition: all 0.3s ease;
+  width: 90%; /* Make the button wider */
   height: 50px; /* Make the button taller */
   margin-top: 10px;
   background: linear-gradient(to right, #0a1f88, #2461ef); /* Gradient background */
   color: #fff; /* White text */
   border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 30px; /* Rounded corners */
   cursor: pointer; /* Hand cursor on hover */
 }
 
 button[type="submit"]:hover {
   background: linear-gradient(to right, #2461ef, #0a1f88); /* Reverse gradient on hover */
   transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.incr {
+  color: black;
+  width: 50%;
+}
+
+.personsContainer {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+}
+
+.detailsContainer {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }

@@ -6,8 +6,6 @@ import View from 'ol/View';
 import { Feature } from 'ol'
 import { OSM, Vector } from 'ol/source';
 import { Tile, Vector as VectorLayer } from 'ol/layer';
-import Select from 'ol/interaction/Select'
-import { click } from 'ol/events/condition'
 import { toLonLat, fromLonLat } from 'ol/proj'
 import { Point, Geometry } from 'ol/geom'
 import { reverseGeocode } from '@esri/arcgis-rest-geocoding'
