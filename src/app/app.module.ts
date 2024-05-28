@@ -46,6 +46,7 @@ import {FileUploadModule} from "primeng/fileupload";
 import {HttpClientModule} from "@angular/common/http";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
 import {GalleriaModule} from "primeng/galleria";
+import { EditPropertyComponent } from "./components/edit-property/edit-property.component";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {GalleriaModule} from "primeng/galleria";
     MainComponent,
     MenuComponent,
     FooterComponent,
+    EditPropertyComponent,
     MyPropertiesComponent,
     NotFoundComponent,
     PropertyComponent,

@@ -1,0 +1,29 @@
+.main-content {
+    display: flex; /* Make the main content a flex container */
+    flex-direction: column; /* Stack elements vertically */
+  }
+  
+  .property-image,
+  .property-data {
+    flex: 1; /* Make both sections take up equal space */
+    display: flex; /* Make each section a flex container (optional for alignment) */
+    flex-direction: column; /* Stack elements within each section vertically */
+    padding: 1rem; /* Add some padding for visual separation */
+  }
+  
+  .property-image {
+    /* Additional styles for the property image section (if needed) */
+  }
+  
+  .property-data h2 {
+    margin-bottom: 1rem; /* Add some space below the heading */
+  }
+  
+  .mat-form-field {
+    margin-bottom: 0.5rem; /* Add space between form fields */
+  }
+  
+  .button-container {
+    text-align: right; /* Align button to the right */
+  }
+  

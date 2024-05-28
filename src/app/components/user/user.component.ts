@@ -100,7 +100,7 @@ throw new Error('Method not implemented.');
   }
 
   viewProperty(property: Property) {
-    this.router.navigate(['/property', property.idProperty]);
+    this.router.navigate(['/editProperty', property.idProperty]);
   }
   
 }

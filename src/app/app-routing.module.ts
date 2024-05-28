@@ -13,6 +13,7 @@ import {NotFoundComponent} from "./components/not-found/not-found.component";
 import {jwtGuardGuard} from "./guards/jwt-guard.guard";
 import { PayComponent } from './components/pay/pay.component';
 import { AddPropertyComponent } from './components/add-property/add-property.component';
+import { EditPropertyComponent } from './components/edit-property/edit-property.component';
 
 export const routes: Routes = [
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: "", canActivate: [jwtGuardGuard], children: [
       {path: 'user', component: UserComponent},
       { path: 'property/:id', component: PropertyComponent },
+      { path: 'editProperty/:id', component: EditPropertyComponent },
       { path: 'requestRent/:id', component: RequestRentComponent },
       { path: 'myProperties', component: MyPropertiesComponent },
       { path: 'requestsAndRents', component: RequestsandrentsComponent },
