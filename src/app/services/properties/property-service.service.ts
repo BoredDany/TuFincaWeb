@@ -23,6 +23,14 @@ export class PropertyServiceService {
     }).then(response => response.data);
   }
 
+  getUserProperties(): Promise<Property []>{
+    return axios.get<Property []>(this.localUrl, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("jwt")}`
+      }
+    }).then(response => response.data);
+  }
+
   //GET BY ID
   getPropertybyId(id: number): Promise<Property>{
     return axios.get<Property>(this.localUrl + id , {

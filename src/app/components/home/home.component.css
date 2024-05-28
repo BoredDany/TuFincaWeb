@@ -31,7 +31,7 @@ main {
 /* Estilos para la cuadrícula de propiedades */
 .property-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 5px;
   padding: 20px;
 }
@@ -45,11 +45,14 @@ main {
   padding: 15px;
   text-align: center;
   font-size: 0.8em;
-  border: 1px solid transparent; /* Preparación para hover */
+  border: 1px solid transparent;
   transition: border 300ms ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
+
 .property-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
   border: 3px solid dodgerblue;
 }
 
@@ -112,4 +115,16 @@ main {
   width: 100%;
   height: 30px;
   padding: 9px;
+}
+
+.centered-btn:hover {
+  background-color: #DFD0B8;
+}
+
+.centered-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 300ms ease;
 }

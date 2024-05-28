@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import 'ol/ol.css';
 import { Style, Icon } from 'ol/style';
 import Map from 'ol/Map';
@@ -13,6 +13,7 @@ import { Point, Geometry } from 'ol/geom'
 import { reverseGeocode } from '@esri/arcgis-rest-geocoding'
 import { ApiKeyManager } from '@esri/arcgis-rest-request'
 import { environment } from '../../environment/environment';
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-map',
@@ -23,7 +24,19 @@ export class MapComponent implements OnInit {
   map!: Map;
   marker: VectorLayer<Feature<Geometry>> | undefined;
 
-  initMap(centerLocation: any) {
+  @Input()
+  latitude: FormControl<string | null> | undefined;
+
+  @Input()
+  longitude: FormControl<string | null> | undefined;
+
+  @Input()
+  country: FormControl<string | null> | undefined;
+
+  @Input()
+  city: FormControl<string | null> | undefined;
+
+  initMap(centerLocation: any, zoom: number) {
     this.map = new Map({
       layers: [
         new Tile({
@@ -31,9 +44,10 @@ export class MapComponent implements OnInit {
         }),
       ],
       target: 'map',
-      view: new View({ 
+      view: new View({
         center: centerLocation,
-        zoom: 13,maxZoom: 18, 
+        zoom,
+        maxZoom: 18,
       }),
     });
 
@@ -42,12 +56,12 @@ export class MapComponent implements OnInit {
     this.map.on('click', async e => {
       const latLong = toLonLat(e.coordinate);
       const data = await reverseGeocode(
-        latLong as [number, number], 
+        latLong as [number, number],
         { authentication: authGeocoder }
       );
-  
+
       if (this.marker != undefined) this.map.removeLayer(this.marker);
-  
+
       this.marker = new VectorLayer({
         source: new Vector(),
         style: new Style({
@@ -57,22 +71,26 @@ export class MapComponent implements OnInit {
           })
         })
       })
-    
+
       this.map.addLayer(this.marker);
       const pointMark = new Feature(
         new Point(fromLonLat(latLong))
       );
       this.marker.getSource()?.addFeature(pointMark);
       console.log(data)
+      this.latitude?.setValue(latLong[0].toString());
+      this.longitude?.setValue(latLong[1].toString());
+      this.city?.setValue(data.address["City"])
+      this.country?.setValue(data.address["CntryName"])
     });
   }
 
   ngOnInit(): void {
 
     navigator.geolocation.getCurrentPosition(
-      e => this.initMap(fromLonLat([e.coords.longitude, e.coords.latitude])),
+      e => this.initMap(fromLonLat([e.coords.longitude, e.coords.latitude]), 12),
       error => {
-        this.initMap([0, 0]);
+        this.initMap([0, 0], 2);
         console.log(error);
       }
     );

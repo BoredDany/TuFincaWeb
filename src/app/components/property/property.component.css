@@ -8,11 +8,10 @@ html {
 }
 
 .main-content {
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 60px;
+  height: 70%;
 }
 
 .property-details {
@@ -22,7 +21,7 @@ html {
 
 .property-image {
   width: 50%;
-  height: 10%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -52,4 +51,12 @@ html {
 .requestButton {
   width: 50%;
   margin-top: 10px;
+}
+
+:host >>> .p-galleria-content, :host >>> .p-galleria-item-wrapper {
+  min-height: 100%;
+}
+
+:host >>> p-galleriaitem {
+  min-height: 100%;
 }

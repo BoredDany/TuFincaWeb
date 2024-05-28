@@ -32,9 +32,9 @@ export class RequestsandrentsComponent {
 
   loadRentRequests() {
     this.rentRequestService
-      .getRentRequests()
+      .getRentRequestsWhereIsRenter()
       .then((requests) => {
-        this.requests = requests;
+        this.requests = requests.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
       .catch((error) => {
         console.error(error);
@@ -43,9 +43,9 @@ export class RequestsandrentsComponent {
 
   loadRents() {
     this.rentService
-      .getRents()
+      .getRentsWhereIsRenter()
       .then((rents) => {
-        this.rents = rents;
+        this.rents = rents.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
       })
       .catch((error) => {
         console.error(error);
