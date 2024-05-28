@@ -29,7 +29,7 @@ export class EditPropertyComponent {
     this.propertyForm = new FormGroup({
       name: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required),
-      area: new FormControl('', [Validators.required, Validators.email]),
+      area: new FormControl('', Validators.required),
       rooms: new FormControl('', Validators.required),
       bathrooms: new FormControl('', Validators.required),
       parking: new FormControl('', Validators.required),
@@ -44,13 +44,20 @@ export class EditPropertyComponent {
 
   ngOnInit(): void {
     this.loadPropertyDetail();
+    this.loadPropertyData();
   }
 
-  private loadUserData() {
+  private loadPropertyData() {
     const propertySelected =  { name: this.property.name, 
       price: this.property.price, 
       area: this.property.area, 
       rooms: this.property.rooms,
+      bathrooms: this.property.bathrooms,
+      parking: this.property.parking,
+      kitchens: this.property.kitchens,
+      floors: this.property.floors,
+      description: this.property.description,
+
      };
     this.propertyForm.patchValue(propertySelected);
   }
@@ -69,6 +76,7 @@ export class EditPropertyComponent {
           })
         }
         this.property = property;
+        this.propertyForm.patchValue(this.property);
 
         if (refTemp.length == 0) {
           this.images.push({
@@ -85,8 +93,42 @@ export class EditPropertyComponent {
       });
   }
 
-  submitPropertyDetails(){
+  submitPropertyDetails() {
+    if (this.propertyForm.valid) {
+      this.loading = true;
+      const updatedProperty = new Property(
+        this.property.idProperty,
+        this.propertyForm.value.name,
+        this.property.country,
+        this.property.city,
+        this.property.latitude,
+        this.property.longitude,
+        this.propertyForm.value.price,
+        this.propertyForm.value.area,
+        this.propertyForm.value.description,
+        this.propertyForm.value.rooms,
+        this.propertyForm.value.bathrooms,
+        this.propertyForm.value.parking,
+        this.propertyForm.value.kitchens,
+        this.propertyForm.value.floors,
+        this.property.status,
+        this.property.ownerId,
+        this.property.rentIds,
+        this.property.rentRequestIds,
+        this.property.photoIds
+      );
 
+      this.propertyService.updateProperty(updatedProperty).then(
+        response => {
+          console.log('Property updated successfully', response);
+          this.router.navigate(['/user']);
+        },
+        error => {
+          console.error('Error updating property', error);
+          this.loading = false;
+        }
+      );
+    }
   }
   
 }

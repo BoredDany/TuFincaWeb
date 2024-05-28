@@ -1,29 +1,28 @@
 <main class="main-content">
     <div class="property-image">
-        <!-- <p-image
-        imageClass="imageProperty"
-        [src]="'/assets/images/home.jpg'"
-        alt="{{property.name}}"
-        [preview]="true"
-        ></p-image> -->
-    
-          <div *ngIf="images.length > 0">
-            <p-galleria
-              [value]="images"
-              indicatorsPosition="bottom"
-              [showIndicators]="true"
-              [showThumbnails]="false"
-              [showIndicatorsOnItem]="true"
-              [containerStyle]="{'width': '100%', 'min-height': '100%'}">
-              >
-              <ng-template pTemplate="item" let-item>
-                <img [src]="item.imageSrc" style="width: 100%; min-height: 100%;" />
-              </ng-template>
-            </p-galleria>
-          </div>
-    
+      <!-- <p-image
+      imageClass="imageProperty"
+      [src]="'/assets/images/home.jpg'"
+      alt="{{property.name}}"
+      [preview]="true"
+      ></p-image> -->
+  
+      <div *ngIf="images.length > 0">
+        <p-galleria
+          [value]="images"
+          indicatorsPosition="bottom"
+          [showIndicators]="true"
+          [showThumbnails]="false"
+          [showIndicatorsOnItem]="true"
+          [containerStyle]="{'width': '100%', 'min-height': '100%'}">
+          >
+          <ng-template pTemplate="item" let-item>
+            <img [src]="item.imageSrc" style="width: 100%; min-height: 100%;" />
+          </ng-template>
+        </p-galleria>
       </div>
-      
+    </div>
+  
     <div class="property-data">
       <h2>Edit Property Details</h2>
       <form [formGroup]="propertyForm" (ngSubmit)="submitPropertyDetails()">

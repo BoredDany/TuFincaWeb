@@ -1,29 +1,74 @@
 .main-content {
-    display: flex; /* Make the main content a flex container */
-    flex-direction: column; /* Stack elements vertically */
+  display: flex; /* Hacer que el contenido principal sea un contenedor flex */
+  flex-direction: row; /* Colocar los elementos en fila */
+  gap: 2rem; /* Añadir espacio entre las secciones */
+  padding: 2rem; /* Añadir padding alrededor del contenido */
+}
+
+.property-image,
+.property-data {
+  flex: 1; /* Hacer que ambas secciones ocupen el mismo espacio */
+  display: flex; /* Hacer que cada sección sea un contenedor flex */
+  flex-direction: column; /* Apilar elementos dentro de cada sección verticalmente */
+  padding: 1rem; /* Añadir padding para separación visual */
+  border: 1px solid #ccc; /* Añadir un borde gris claro alrededor de cada sección */
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #f9f9f9; /* Fondo color gris claro */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para dar profundidad */
+}
+
+.property-image {
+  justify-content: center; /* Centrar contenido verticalmente */
+  align-items: center; /* Centrar contenido horizontalmente */
+}
+
+.property-data h2 {
+  margin-bottom: 1rem; /* Añadir espacio debajo del encabezado */
+  color: #333; /* Color del texto */
+  font-size: 1.5rem; /* Tamaño de fuente */
+  font-weight: 600; /* Grosor de la fuente */
+}
+
+.mat-form-field {
+  margin-bottom: 1rem; /* Añadir espacio entre los campos del formulario */
+  width: 100%; /* Hacer que los campos ocupen todo el ancho */
+}
+
+.mat-form-field input,
+.mat-form-field textarea {
+  padding: 0.5rem; /* Añadir padding dentro de los campos */
+  border-radius: 4px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde gris claro */
+}
+
+.mat-form-field input:focus,
+.mat-form-field textarea:focus {
+  border-color: #007bff; /* Cambiar color del borde al enfocarse */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Añadir sombra azul */
+}
+
+.button-container {
+  text-align: right; /* Alinear botón a la derecha */
+  margin-top: 1rem; /* Añadir espacio arriba del contenedor de botones */
+}
+
+button[type="submit"] {
+  background-color: #007bff; /* Color de fondo azul */
+  color: #fff; /* Color del texto blanco */
+  padding: 0.75rem 1.5rem; /* Padding interno */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  cursor: pointer; /* Cambiar cursor a puntero */
+  font-size: 1rem; /* Tamaño de fuente */
+  transition: background-color 0.3s; /* Transición suave del color de fondo */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column; /* Apilar secciones verticalmente en pantallas pequeñas */
   }
-  
-  .property-image,
-  .property-data {
-    flex: 1; /* Make both sections take up equal space */
-    display: flex; /* Make each section a flex container (optional for alignment) */
-    flex-direction: column; /* Stack elements within each section vertically */
-    padding: 1rem; /* Add some padding for visual separation */
-  }
-  
-  .property-image {
-    /* Additional styles for the property image section (if needed) */
-  }
-  
-  .property-data h2 {
-    margin-bottom: 1rem; /* Add some space below the heading */
-  }
-  
-  .mat-form-field {
-    margin-bottom: 0.5rem; /* Add space between form fields */
-  }
-  
-  .button-container {
-    text-align: right; /* Align button to the right */
-  }
-  
+}
