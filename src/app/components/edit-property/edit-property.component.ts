@@ -98,9 +98,9 @@ export class EditPropertyComponent {
 
   submitPropertyDetails() {
     if (!this.propertyForm.valid) {
-        // Mostrar mensaje de error
+        this.showError("Valida la informacion que ingresaste.")
     } else {
-      // MOstrar mensaje de espera 
+      this.showWait()
       this.loading = true;
       const updatedProperty = new Property(
         this.property.idProperty,
@@ -131,7 +131,7 @@ export class EditPropertyComponent {
         }
       ).catch(
         error => {
-          // Mostrar mensaje de error
+          this.showError("No pudimos actualizar la propiedad.")
           console.error('Error updating property', error);
           this.loading = false;
         }
