@@ -36,8 +36,8 @@
     <div class="request-section">
       <h1>Solicitudes de Rentas</h1>
       <div class="horizontal-scroll-container">
-        <div *ngIf="requests.length > 0; else noRequests" class="request-grid">
-          <div *ngFor="let request of requests; let i = index" class="request-card">
+        <div *ngIf="requestsToRender.length > 0; else noRequests" class="request-grid">
+          <div *ngFor="let request of requestsToRender; let i = index" class="request-card">
             <div class="request-info">
               <h2>Solicitud De Renta N°{{ i + 1 }}</h2>
               <p>Propiedad: {{ request.propertyId }}</p>

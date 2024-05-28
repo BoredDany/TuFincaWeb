@@ -18,6 +18,7 @@ import { MessageService } from 'primeng/api';
 })
 export class MyPropertiesComponent {
   requests: RentRequest[] = [];
+  requestsToRender: RentRequest[] = []
   rents: Rent[] = [];
   approval = Approval;
   renterId = 2; // obtener del usuario loggeado
@@ -39,6 +40,7 @@ export class MyPropertiesComponent {
       .getRentRequestsWhereIsOwner()
       .then((requests) => {
         this.requests = requests.sort((a, b) => new Date(a.dateStart).getTime() - new Date(b.dateStart).getTime());
+        this.requestsToRender = this.requests.filter(r => r.approval != Approval.REJECTED && r.approval != Approval.ACCEPTED)
       })
       .catch((error) => {
         console.error(error);
@@ -93,12 +95,14 @@ export class MyPropertiesComponent {
   }
 
   async acceptRequest(request: RentRequest) {
+    this.showWaitApprove("Estamos aceptando la request...", "aceptando")
     try {
       request.approval = Approval.ACCEPTED;
       await this.rentRequestService.putRentRequest(request);
       console.log('Rent request accepted successfully');
       await this.postRent(request);
       console.log('Rent posted successfully');
+      window.location.reload()
     } catch (error) {
       console.error('Error:', error);
     }
@@ -138,24 +142,30 @@ export class MyPropertiesComponent {
 
   rejectRequest(request: RentRequest) {
     request.approval = Approval.REJECTED;
+    this.showWaitApprove("La rechazaremos en un momento.", "rechazando")
     this.rentRequestService
       .putRentRequest(request)
       .then(() => {
+        window.location.reload()
         console.log('Rent request rejected successfully');
       })
       .catch((error) => {
+        this.showError('Error rejecting rent request')
         console.error('Error rejecting rent request:', error);
       });
   }
 
   cancelRent(rent: Rent) {
+    this.showWaitApprove("La cancelaremos en un momento.", "cancelando")
     rent.rentStatus = Approval.CANCELLED;
     this.rentService
       .putRent(rent)
       .then(() => {
+        window.location.reload()
         console.log('Rent canceled successfully');
       })
       .catch((error) => {
+        this.showError('Error cancelling rent')
         console.error('Error canceling rent:', error);
       });
   }
@@ -183,5 +193,9 @@ export class MyPropertiesComponent {
 
   private showWait(msg: string) {
     this.messageService.add({severity: 'warn', summary: 'Calificando...', detail: msg});
+  }
+
+  private showWaitApprove(msg: string, action: string) {
+    this.messageService.add({severity: 'warn', summary: `Estamos ${action} la request.`, detail: msg});
   }
 }
